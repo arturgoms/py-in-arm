@@ -1,0 +1,7 @@
+Q(present)
+Q(power)
+Q(info)
+Q(readblocks)
+Q(writeblocks)
+Q(ioctl)
+Q(SD)
