@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <script src="http://code.jquery.com/jquery-2.2.0.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+
+
+    <link rel="stylesheet" href="../static/css/bootstrap.css" type="text/css">
+    <link rel="stylesheet" type="text/css" href="../static/semantic/semantic.css">
+    <!-- <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.15.2/theme/solarized.min.css"> -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.15.2/codemirror.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.15.2/mode/python/python.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.15.2/mode/javascript/javascript.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.15.2/codemirror.min.css">
+    <link rel="stylesheet" type="text/css" href="../static/solarized.css">
+    <link rel="stylesheet" type="text/css" href="../static/style.css">
+    <script type="text/javascript">
+        function processData(data) {
+          // taking care of data
+        }
+        function handler() {
+          if(this.status == 200 &&
+            this.responseXML != null &&
+            this.responseXML.getElementById('test').textContent) {
+            // success!
+            processData(this.responseXML.getElementById('test').textContent);
+          } else {
+            // something went wrong
+          }
+        }
+        function flash() {
+                //var client = new XMLHttpRequest();
+                //client.onload = handler;
+                //client.open("GET", "/flash?projeto={{ projeto }}&file={{ file }}", false);
+                //client.send();
+                //document.getElementById("demo").innerHTML = client.responseText;
+             window.location = "/dev?projeto={{ projeto }}&file={{ file }}&flash=True";
+
+        }
+        window.onload = function() {
+            var editor = CodeMirror.fromTextArea(document.getElementById("codemirror"), {
+                lineNumbers: true,
+                theme: "solarized dark",
+                mode: "python",
+                autofocus: true
+            });
+        }
+        </script>
+    <title>Pyrm</title>
+</head>
+    <body style="background-size:cover;background: url('../static/img/bg.png') no-repeat left center;" >
+    <div>
+        <div style="margin-top: 5%;margin-left: 35%; width: 700px;" class="ui card">
+          <div class="content">
+              <div class="header">Editor: {{ file }}
+              {% if erro %}
+                        <h5 style="margin-top: 10px; padding: 3px;" class="ui red message"><strong>Erro:</strong> {{ erro }}</h5>
+              {% endif %}
+              {% if aviso %}
+                        <h5 style="margin-top: 10px; padding: 3px;" class="ui green message"><strong>Aviso:</strong> {{ aviso }}</h5>
+              {% endif %}
+              </div>
+              <div>
+                  <div class="ui extra content">
+                      <form action="" id="textform" method="post">
+                            <p><textarea name="code" id="codemirror" title="Editor">{{ arquivo }}</textarea></p>
+                            <input class="ui teal button" type="submit" value="Save">
+                      </form>
+                      <div style="margin-left: 80px;margin-top: -35px" >
+                            <button onclick="flash()" class="ui teal button">Flash</button>
+                      </div>
+                  </div>
+            </div>
+          </div>
+        </div>
+        <div style="margin-top: -340px;margin-left: 10%; width: 250px" class="ui card">
+          <div class="content">
+              <div class="header">Projeto: {{ projeto }}
+              </div><br>
+              {% for i in arquivos %}
+                  <a href="dev?projeto={{ projeto }}&file={{ i }}"><h5>{{ i }}</h5></a><br>
+              {% endfor %}
+              <div>
+                 <div class="extra content">
+                     <a href="projeto"><button class="ui teal button">Voltar</button></a>
+                 </div>
+            </div>
+          </div>
+        </div>
+    </div>
+
+
+    </body>
+</html>

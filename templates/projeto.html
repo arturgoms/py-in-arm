@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../static/css/bootstrap.css" type="text/css">
+    <link rel="stylesheet" href="../static/css/bootstrap-theme.min.css" type="text/css">
+    <link rel="stylesheet" href="../static/css/master.css" type="text/css" >
+    <link rel="stylesheet" type="text/css" href="../static/semantic/semantic.css">
+
+    <title>Pyrm</title>
+    <script>
+        function addFolder() {
+                name = prompt('Porfavor Insira o nome do projeto:');
+                window.location = "/projeto?newproject="+name;
+            }
+        function deleteFolder() {
+                name = prompt('Porfavor Insira o nome do projeto que deseja deletar:');
+                window.location = "/projeto?delete="+name;
+            }
+        function editFolder() {
+                name = prompt('Porfavor Insira o nome antigo e o novo nome do projeto separados por vírgula:');
+                window.location = "/projeto?edit="+name;
+            }
+    </script>
+    <style>
+        .fblogo {
+            display: inline-block;
+            margin-left: auto;
+            margin-right: auto;
+            height: 30px;
+        }
+
+        #images{
+            text-align:center;
+        }
+    </style>
+
+</head>
+    <body style="background-size:cover;background: url('../static/img/bg.png') no-repeat left center;" >
+
+        <div style="margin-top: 10%;margin-left: 30%; width: 500px" class="ui card">
+          <div class="content">
+              <div class="header">Projetos</div>
+                <h4 class="summary">Você selecionou a placa: {{ board }}</h4>
+          <div>
+              <a style="margin-left: 0px" onclick="addFolder()"><img src="../static/img/addfolder.png"></a>
+              <a style="margin-left: 15px" onclick="deleteFolder()"><img src="../static/img/delete.png"></a>
+              <a style="margin-left: 15px" onclick="editFolder()"><img src="../static/img/edit.png"></a>
+              {% if erro %}
+                        <p style="margin-top: 10px" class="ui red message"><strong>Erro:</strong> {{ erro }}</p>
+              {% endif %}
+          </div><div id="images">
+              {% for i in pastas %}
+
+                    <a class="fblogo" href="dev?projeto={{ i }}&file=main.py" >
+                        <img src="../static/img/folder.png">
+                        <p>{{ i }}</p>
+                    </a>
+
+                {% endfor %}</div>
+          </div>
+         <div class="extra content">
+
+
+           <a href="board"><button class="ui teal button">Voltar</button></a>
+          </div>
+        </div>
+
+        <script src="../static/semantic/semantic.js">
+        </script>
+    </body>
+</html>
