@@ -3,13 +3,13 @@
  <img src="https://dl.dropboxusercontent.com/s/bmfjwfe2ngnivwn/sdversion.png?dl=0" alt="SDVersion"/>
 </p>
 
-<p align="center">#Python IDE for ARM Processors based on microPython framework.</p>
+<p align="center">Python IDE for ARM Processors based on microPython framework.</p>
 
 
 
 ## How it works
 
-#It is an IDE created in Flask and based on the microPython framwork, everything was done in html and css, some parts in javascript and it was also used the librarian Codemirror for the syntax in the python editor.
+It is an IDE created in Flask and based on the microPython framwork, everything was done in html and css, some parts in javascript and it was also used the librarian Codemirror for the syntax in the python editor.
 
 ### Manual installation
 
