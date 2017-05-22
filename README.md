@@ -19,21 +19,21 @@ It is an IDE created in Flask and based on the microPython framwork, everything 
       git clone https://github.com/arturgoms/Pyrm.git
  ```
 The next step is install all the dependencies( if you already have pip installed):
-  ```bash
-       pip install -U -r  requirements.txt
+ ```bash
+      pip install -U -r  requirements.txt
  ```
 If dont ( Windows ):
-  ```bash
-       python get-pip.py
+ ```bash
+      python get-pip.py
  ```
 (macOs):
 
-  ```bash
-       sudo easy_install pip
+ ```bash
+      sudo easy_install pip
  ```
  After enter the directory you can now execute Pyrm.py:
-   ```bash
-       sudo python Pyrm.py
+ ```bash
+      sudo python Pyrm.py
  ```
 
 
