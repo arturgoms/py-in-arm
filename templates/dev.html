@@ -13,6 +13,21 @@
     <link rel="stylesheet" type="text/css" href="../static/css/codemirror.min.css">
     <link rel="stylesheet" type="text/css" href="../static/solarized.css">
     <link rel="stylesheet" type="text/css" href="../static/style.css">
+    <style>
+            .centerDiv{
+  position: fixed;
+  top: 100%;
+  left: 60%;
+  /* bring your own prefixes */
+  transform: translate(-50%, 30%);
+    }    .centerDiv2{
+  position: fixed;
+  top: 20%;
+  left: 15%;
+  /* bring your own prefixes */
+  transform: translate(-50%, -100%);
+    }
+    </style>
     <script type="text/javascript">
         function processData(data) {
           // taking care of data
@@ -49,7 +64,7 @@
 </head>
     <body style="background-size:cover;background: url('../static/img/bg.png') no-repeat left center;" >
     <div>
-        <div style="margin-top: 5%;margin-left: 35%; width: 700px;" class="ui card">
+        <div style="width: 700px;" class="ui card centerDiv">
           <div class="content">
               <div class="header">Editor: {{ file }}
               {% if erro %}
@@ -72,7 +87,7 @@
             </div>
           </div>
         </div>
-        <div style="margin-top: -340px;margin-left: 10%; width: 250px" class="ui card">
+        <div style=" width: 250px" class="ui card centerDiv2">
           <div class="content">
               <div class="header">Projeto: {{ projeto }}
               </div><br>

@@ -8,54 +8,65 @@
     <link rel="stylesheet" type="text/css" href="../static/semantic/semantic.css">
     <title>Pyrm</title>
     <style>
+    .centerDiv{
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  /* bring your own prefixes */
+  transform: translate(-50%, -50%);
+    }
+   .centerDiv2{
+  position: fixed;
+  top: 34.5%;
+  left: 17%;
+  /* bring your own prefixes */
+  transform: translate(-50%, -50%);
+    }
+.centerDiv3{
+  position: fixed;
+  top: 0%;
+  left: 50%;
+  /* bring your own prefixes */
+  transform: translate(-50%, -50%);
+    }
+        .centerDiv4{
+  position: fixed;
+  top: -34%;
+  left: 83%;
+  /* bring your own prefixes */
+  transform: translate(-50%, -50%);
+    }
     </style>
     <script type="text/javascript">
     </script>
 </head>
-    <body style="background-size:cover;background: url('../static/img/bg.png') no-repeat left center;" >
+<body style="background-size:cover;background: url('../static/img/bg.png') no-repeat left center;">
+        <div  style="width: 790px; height: 430px;" class="ui card centerDiv ">
 
-        <div style="margin-top: 10%;margin-left: 20%; width: 790px; height: 430px" class="ui card">
-
-            <div style="margin-top: -0px; margin-left: 300px" class="header"><h2>Selecione sua placa</h2></div>
-
-                <div style="margin-top: 18px;margin-left: 530px;width: 250px; height: 350px" class="ui card ">
-                  <a class="image" href="projeto?board=mk20dx256">
-                    <img src="../static/img/teensy31.jpg">
-                      </a>
-                      <div style="margin-top: -105px" class="content">
-                        <a class="header" href="#">Teensy 3.1</a>
-                        <div class="meta">
-                          <a>Processador: mk20dx256</a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                <div style="margin-top: -375px; margin-left: 265px ;width: 250px; height: 350px" class="ui card ">
-                  <a class="image" href="projeto?board=mk64fx512">
-                    <img src="../static/img/teensy35.jpg">
-                      </a>
-                      <div style="margin-top: -105px" class="content">
-                        <a class="header" href="#">Teensy 3.5</a>
-                        <div class="meta">
-                          <a>Processador: mk64fx512</a>
-                        </div>
+            <div style="position:fixed; margin-top: 15px; margin-left: 300px" class="header"><h2>Selecione sua placa</h2></div>
+                <div style="width: 250px; height: 350px" class="ui card centerDiv2">
+                  <a class="image" href="projeto?board=mk20dx256"> <img src="../static/img/teensy31.jpg"> </a>
+                      <div style="margin-top: -50px" class="content">
+                        <a class="header" href="projeto?board=mk20dx256">Teensy 3.1</a>
+                        <div class="meta"><a href="projeto?board=mk20dx256">Processador: mk20dx256</a></div>
                       </div>
                 </div>
-                 <div style="margin-top: -365px; margin-left: 525px ;width: 250px; height: 350px" class="ui card ">
-                  <a class="image" href="projeto?board=mk66fx1m0" >
-                    <img src="../static/img/teensy36.jpg">
-                      </a>
-                      <div style="margin-top: -105px" class="content">
-                        <a class="header" href="#">Teensy 3.6</a>
-                        <div class="meta">
-                          <a>Processador: mk66fx1m0</a>
-                        </div>
+                <div style="width: 250px; height: 350px" class="ui card centerDiv3">
+                  <a class="image" href="projeto?board=mk64fx512"> <img src="../static/img/teensy35.jpg"> </a>
+                      <div style="margin-top: -50px" class="content">
+                        <a class="header" href="projeto?board=mk64fx512">Teensy 3.5</a>
+                        <div class="meta"><a href="projeto?board=mk64fx512">Processador: mk64fx512</a></div>
                       </div>
                 </div>
+                 <div style="width: 250px; height: 350px" class="ui card centerDiv4">
+                  <a class="image" href="projeto?board=mk66fx1m0" > <img src="../static/img/teensy36.jpg"> </a>
+                      <div style="margin-top: -50px" class="content">
+                        <a class="header" href="projeto?board=mk66fx1m0">Teensy 3.6</a>
+                        <div class="meta"><a href="projeto?board=mk66fx1m0">Processador: mk66fx1m0</a></div>
+                      </div>
+                </div>
+            </body>
         </div>
-
-
-    </body>
+</body>
     <script src="../static/semantic/semantic.js"></script>
 </html>

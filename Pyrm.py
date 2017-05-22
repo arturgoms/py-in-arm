@@ -4,8 +4,10 @@ from gevent.wsgi import WSGIServer
 import configparser, shutil
 import os
 from flask import Flask, request, redirect, url_for
+from sys import platform as _platform
 from werkzeug.utils import secure_filename
 
+path = os.path.dirname(os.path.abspath(__file__))
 UPLOAD_FOLDER = '/Volumes/Armazenamento/Projetos/Pyrm/Projects'
 
 # Config data
@@ -15,11 +17,25 @@ app = Flask(__name__)
 
 
 # Caminho das Pastas
-projetos = "/Volumes/Armazenamento/Projetos/Pyrm/Projects"
-script = '/Volumes/Armazenamento/Projetos/Pyrm/script'
-loader = "teensy/teensy_loader_cli"
-conf = "config.ini"
-config = configparser.ConfigParser()
+if _platform == "linux" or _platform == "linux2": # linux
+    projetos = path + "\Projects"
+    script = path + '\script'
+    loader = path + "\teensy\teensy_loader_cli"
+    conf = path + '\config.ini'
+    config = configparser.ConfigParser()
+elif _platform == "darwin":# MAC OS X
+    projetos = path + "\Projects"
+    script = path + '\script'
+    loader = path + "\teensy\teensy_loader_cli"
+    conf = path + '\config.ini'
+    config = configparser.ConfigParser()
+elif _platform == "win32":# Windows
+    projetos = path + "\Projects"
+    script = path + '\script'
+    loader = path + "\teensy\teensy_loader_cli"
+    conf = path + '\config.ini'
+    config = configparser.ConfigParser()
+
 
 
 @app.route("/")  # Welcome Screen
@@ -131,12 +147,11 @@ def verifConf():  # verifica se existe o arquivo conf.ini, se nao tiver ele cria
             return 0
     except IOError:
         config['DEFAULT'] = {'board': 'mk66fx1m0'}
-
         with open(conf, 'w') as configfile:
             config.write(configfile)
         return 1
 
 
 if __name__ == '__main__':
-    http_server = WSGIServer(('', INI[2]), app)
+    http_server = WSGIServer(('0.0.0.0', 8080), app)
     http_server.serve_forever()

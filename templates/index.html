@@ -7,11 +7,19 @@
     <link rel="stylesheet" href="../static/css/master.css" type="text/css" >
     <link rel="stylesheet" type="text/css" href="../static/semantic/semantic.css">
     <title>Pyrm</title>
-
+    <style>
+        .centeredDiv {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      /* bring your own prefixes */
+      transform: translate(-50%, -50%);
+    }
+    </style>
 </head>
     <body style="background-size:cover;background: url('../static/img/bg.png') no-repeat left center;" >
 
-        <div style="margin-top: 15%;margin-left: 38%" class="ui card">
+        <div  class="ui card centeredDiv">
           <div class="content">
               <div class="header">Bem vindo ao Pyrm</div>
             <h4 class="summary">Essa é uma IDE para Processadores ARM compatíveis com a linguagem Python.

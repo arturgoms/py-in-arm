@@ -32,13 +32,19 @@
 
         #images{
             text-align:center;
-        }
+        }    .centerDiv{
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  /* bring your own prefixes */
+  transform: translate(-50%, -50%);
+    }
     </style>
 
 </head>
     <body style="background-size:cover;background: url('../static/img/bg.png') no-repeat left center;" >
 
-        <div style="margin-top: 10%;margin-left: 30%; width: 500px" class="ui card">
+        <div style=" width: 500px" class="ui card centerDiv">
           <div class="content">
               <div class="header">Projetos</div>
                 <h4 class="summary">Você selecionou a placa: {{ board }}</h4>
