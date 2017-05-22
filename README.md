@@ -1,6 +1,6 @@
 
 <p align="center">
- <img src="https://dl.dropboxusercontent.com/s/bmfjwfe2ngnivwn/sdversion.png?dl=0" alt="SDVersion"/>
+ <img src="https://drive.google.com/open?id=0B7Pip5SREADrUXM3cXpCTjR1ZWc" alt="SDVersion"/>
 </p>
 
 <p align="center">Python IDE for ARM Processors based on microPython framework.</p>
