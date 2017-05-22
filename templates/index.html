@@ -2,11 +2,47 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <script src="../static/js/jquery-2.2.0.min.js"></script>
+    <script src="../static/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../static/css/bootstrap.css" type="text/css">
-    <link rel="stylesheet" href="../static/css/bootstrap-theme.min.css" type="text/css">
-    <link rel="stylesheet" href="../static/css/master.css" type="text/css" >
     <link rel="stylesheet" type="text/css" href="../static/semantic/semantic.css">
+    <!-- <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.15.2/theme/solarized.min.css"> -->
+    <script type="text/javascript" src="../static/js/codemirror.min.js"></script>
+    <script type="text/javascript" src="../static/js/python.min.js"></script>
+    <script type="text/javascript" src="../static/js/javascript.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../static/css/codemirror.min.css">
+    <link rel="stylesheet" type="text/css" href="../static/solarized.css">
+    <link rel="stylesheet" type="text/css" href="../static/style.css">
     <title>Pyrm</title>
+    <script type="text/javascript">
+        $(function() {
+        var submit_form = function(e) {
+          $.getJSON('/?lang=PT', {
+          }, function(data) {
+            $('#result').text(data.result);
+          });
+          return false;
+        };
+          $("#pt").click(function(e){
+            submit_form(e);
+            window.location.replace("/");
+       });
+      });
+      $(function() {
+        var submit_form = function(e) {
+          $.getJSON('/?lang=EN', {
+          }, function(data) {
+            $('#result').text(data.result);
+          });
+          return false;
+        };
+          $("#en").click(function(e){
+            submit_form(e);
+            window.location.replace("/");
+       });
+      });
+
+    </script>
     <style>
         .centeredDiv {
       position: fixed;
@@ -14,24 +50,42 @@
       left: 50%;
       /* bring your own prefixes */
       transform: translate(-50%, -50%);
-    }
+    }.container {
+            margin-left: 0px;
+            margin-top: 0px;
+            width:50px;
+            }
+        .photo {
+        width:50px;
+        height: 50px;
+        text-align:center;
+        vertical-align:top;
+        display:inline-block;
+        }
     </style>
+
 </head>
     <body style="background-size:cover;background: url('../static/img/bg.png') no-repeat left center;" >
 
         <div  class="ui card centeredDiv">
           <div class="content">
-              <div class="header">Bem vindo ao Pyrm</div>
-            <h4 class="summary">Essa é uma IDE para Processadores ARM compatíveis com a linguagem Python.
-                        Use com sabedoria, existem exemplos para você começar e a interface foi contruida
-                            da forma mais intuitiva e prática possível. Todas as informações se encontram no meu <a href="http://github.com/artugoms">Github.</a></h4>
+              <center><div class="header"><h2>{{ welcome }}</h2></div></center>
+            <h4 class="summary">{{ welcome2 }} <a href="http://github.com/artugoms">Github.</a></h4>
 
           </div>
-          <div class="extra content">
-           <a href="board"><button class="ui teal button">Começar</button></a>
+                <div  style="margin-left: 18%" class="container">
+
+                        <div class="photo">
+                            <a id="pt"><img src="../static/img/brazil.png" ></a>
+                        </div>
+                        <div style="margin-top: -50px; margin-left: 80px" class="photo">
+                            <a id="en"><img src="../static/img/united-states.png"></a>
+                        </div>
+                    </div>
+          <div style="margin-left: 32%" class="extra content">
+           <a href="board"><button class="ui teal button">{{ start }}</button></a>
           </div>
         </div>
 
-        <script src="../static/semantic/semantic.js"></script>
     </body>
 </html>

@@ -10,15 +10,15 @@
     <title>Pyrm</title>
     <script>
         function addFolder() {
-                name = prompt('Porfavor Insira o nome do projeto:');
+                name = prompt('{{ nameofproject }}');
                 window.location = "/projeto?newproject="+name;
             }
         function deleteFolder() {
-                name = prompt('Porfavor Insira o nome do projeto que deseja deletar:');
+                name = prompt('{{ deleteproject }}');
                 window.location = "/projeto?delete="+name;
             }
         function editFolder() {
-                name = prompt('Porfavor Insira o nome antigo e o novo nome do projeto separados por vírgula:');
+                name = prompt('{{ renameproject }}');
                 window.location = "/projeto?edit="+name;
             }
     </script>
@@ -46,14 +46,14 @@
 
         <div style=" width: 500px" class="ui card centerDiv">
           <div class="content">
-              <div class="header">Projetos</div>
-                <h4 class="summary">Você selecionou a placa: {{ board }}</h4>
+              <div class="header">{{ project }}</div>
+                <h4 class="summary">{{ youselect }}: {{ board }}</h4>
           <div>
               <a style="margin-left: 0px" onclick="addFolder()"><img src="../static/img/addfolder.png"></a>
               <a style="margin-left: 15px" onclick="deleteFolder()"><img src="../static/img/delete.png"></a>
               <a style="margin-left: 15px" onclick="editFolder()"><img src="../static/img/edit.png"></a>
               {% if erro %}
-                        <p style="margin-top: 10px" class="ui red message"><strong>Erro:</strong> {{ erro }}</p>
+                        <p style="margin-top: 10px" class="ui red message"><strong>{{ error }}:</strong> {{ erro }}</p>
               {% endif %}
           </div><div id="images">
               {% for i in pastas %}
@@ -68,7 +68,7 @@
          <div class="extra content">
 
 
-           <a href="board"><button class="ui teal button">Voltar</button></a>
+           <a href="board"><button class="ui teal button">{{ back }}</button></a>
           </div>
         </div>
 

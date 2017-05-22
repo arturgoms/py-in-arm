@@ -43,26 +43,26 @@
 <body style="background-size:cover;background: url('../static/img/bg.png') no-repeat left center;">
         <div  style="width: 790px; height: 430px;" class="ui card centerDiv ">
 
-            <div style="position:fixed; margin-top: 15px; margin-left: 300px" class="header"><h2>Selecione sua placa</h2></div>
+            <div style="position:fixed; margin-top: 15px; margin-left: 300px" class="header"><h2>{{ select }}</h2></div>
                 <div style="width: 250px; height: 350px" class="ui card centerDiv2">
                   <a class="image" href="projeto?board=mk20dx256"> <img src="../static/img/teensy31.jpg"> </a>
                       <div style="margin-top: -50px" class="content">
                         <a class="header" href="projeto?board=mk20dx256">Teensy 3.1</a>
-                        <div class="meta"><a href="projeto?board=mk20dx256">Processador: mk20dx256</a></div>
+                        <div class="meta"><a href="projeto?board=mk20dx256">{{ processor }}: mk20dx256</a></div>
                       </div>
                 </div>
                 <div style="width: 250px; height: 350px" class="ui card centerDiv3">
                   <a class="image" href="projeto?board=mk64fx512"> <img src="../static/img/teensy35.jpg"> </a>
                       <div style="margin-top: -50px" class="content">
                         <a class="header" href="projeto?board=mk64fx512">Teensy 3.5</a>
-                        <div class="meta"><a href="projeto?board=mk64fx512">Processador: mk64fx512</a></div>
+                        <div class="meta"><a href="projeto?board=mk64fx512">{{ processor }}: mk64fx512</a></div>
                       </div>
                 </div>
                  <div style="width: 250px; height: 350px" class="ui card centerDiv4">
                   <a class="image" href="projeto?board=mk66fx1m0" > <img src="../static/img/teensy36.jpg"> </a>
                       <div style="margin-top: -50px" class="content">
                         <a class="header" href="projeto?board=mk66fx1m0">Teensy 3.6</a>
-                        <div class="meta"><a href="projeto?board=mk66fx1m0">Processador: mk66fx1m0</a></div>
+                        <div class="meta"><a href="projeto?board=mk66fx1m0">{{ processor }}: mk66fx1m0</a></div>
                       </div>
                 </div>
             </body>

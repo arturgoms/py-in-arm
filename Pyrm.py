@@ -8,48 +8,78 @@ from sys import platform as _platform
 from werkzeug.utils import secure_filename
 
 path = os.path.dirname(os.path.abspath(__file__))
-UPLOAD_FOLDER = '/Volumes/Armazenamento/Projetos/Pyrm/Projects'
 
 # Config data
-INI = [True, "0.0.0.0", 8080]
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 app = Flask(__name__)
 
-
 # Caminho das Pastas
-if _platform == "linux" or _platform == "linux2": # linux
+if _platform == "linux" or _platform == "linux2":  # linux
     projetos = path + "\Projects"
     script = path + '\script'
     loader = path + "\teensy\teensy_loader_cli"
     conf = path + '\config.ini'
     config = configparser.ConfigParser()
-elif _platform == "darwin":# MAC OS X
+elif _platform == "darwin":  # MAC OS X
     projetos = path + "\Projects"
     script = path + '\script'
     loader = path + "\teensy\teensy_loader_cli"
     conf = path + '\config.ini'
     config = configparser.ConfigParser()
-elif _platform == "win32":# Windows
+elif _platform == "win32":  # Windows
     projetos = path + "\Projects"
     script = path + '\script'
     loader = path + "\teensy\teensy_loader_cli"
     conf = path + '\config.ini'
+    lang = path + '\lang.ini'
     config = configparser.ConfigParser()
-
 
 
 @app.route("/")  # Welcome Screen
 def index():
-    return render_template("index.html")
+    config = configparser.ConfigParser()
+    config.read(conf)
+    language = config.get('DEFAULT', 'LANG')
+    config.read(lang)
+    welcome = config.get(language, 'welcome')
+    welcome2 = config.get(language, 'welcome2')
+    start = config.get(language, 'start')
+    langIndex = request.args.get('lang', language, type=str)
+    if langIndex == 'PT':
+        writeConf('DEFAULT', 'LANG', 'PT')
+    elif langIndex == 'EN':
+        writeConf('DEFAULT', 'LANG', 'EN')
+    return render_template("index.html", welcome=welcome, welcome2=welcome2, start=start)
 
 
 @app.route("/board")  # Board Screen
 def board():
-    return render_template("board.html")
+    config = configparser.ConfigParser()
+    config.read(conf)
+    language = config.get('DEFAULT', 'LANG')
+    config.read(lang)
+    select = config.get(language, 'select')
+    processor = config.get(language, 'processor')
+    return render_template("board.html", select=select, processor=processor)
 
 
 @app.route("/projeto", methods=['GET', 'POST'])  # Project Screen
 def projeto():
+    config = configparser.ConfigParser()
+    config.read(conf)
+    language = config.get('DEFAULT', 'LANG')
+    config.read(lang)
+    project = config.get(language, 'project')
+    youselect = config.get(language, 'youselect')
+    nameofproject = config.get(language, 'nameofproject')
+    deleteproject = config.get(language, 'deleteproject')
+    renameproject = config.get(language, 'renameproject')
+    error = config.get(language, 'error')
+    warning = config.get(language, 'warning')
+    erroexists = config.get(language, 'erroexists')
+    errodontexists = config.get(language, 'errodontexists')
+    errorsomething = config.get(language, 'errorsomething')
+    back = config.get(language, 'back')
+
     boardName = 'Placa nao encontrada'
     erro = None
     board = request.args.get('board', 'mk66fx1m0', type=str)
@@ -72,13 +102,13 @@ def projeto():
                 shutil.copyfile(script + '/main.py', projetos + '/' + newproject + '/main.py')
                 shutil.copyfile(script + '/boot.py', projetos + '/' + newproject + '/boot.py')
             else:
-                erro = 'Projeto ja existe'
+                erro = erroexists
     if delete != '':
         if delete != 'null':
             if os.path.exists(projetos + '/' + delete):
                 shutil.rmtree(projetos + '/' + delete)
             else:
-                erro = 'Projeto nao existe'
+                erro = errodontexists
     if edit != '':
         if edit != 'null':
             try:
@@ -87,18 +117,30 @@ def projeto():
                 if os.path.exists(projetos + '/' + old):
                     os.renames(projetos + '/' + old, projetos + '/' + new)
                 else:
-                    erro = 'Projeto nao existe'
+                    erro = errodontexists
             except:
-                erro = 'Algo de errado aconteceu.'
+                erro = errorsomething
     for filename in os.listdir(projetos):
         pastas.append(filename)
 
-
-    return render_template("projeto.html", board=boardName, pastas=pastas, erro=erro)
+    return render_template("projeto.html", board=boardName, pastas=pastas, erro=erro, error=error, warning=warning,
+                           project=project, youselect=youselect, nameofproject=nameofproject,
+                           deleteproject=deleteproject, renameproject=renameproject, back=back)
 
 
 @app.route("/dev", methods=['GET', 'POST'])  # Board Screen
 def dev():
+    config = configparser.ConfigParser()
+    config.read(conf)
+    language = config.get('DEFAULT', 'LANG')
+    config.read(lang)
+    editor = config.get(language, 'editor')
+    back = config.get(language, 'back')
+    error = config.get(language, 'error')
+    warning = config.get(language, 'warning')
+    filesaved = config.get(language, 'filesaved')
+    flashok = config.get(language, 'flashok')
+
     projetoStr = request.args.get('projeto', '', type=str)
     file = request.args.get('file', '', type=str)
     flash = request.args.get('flash', False, type=bool)
@@ -106,7 +148,6 @@ def dev():
     if projetoStr == '':
         return redirect(url_for("projeto"))
     if file != '':
-        app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER + '/' + projetoStr
         arquivo = open(projetos + '/' + projetoStr + '/' + file, 'r')
         arquivo = arquivo.read()
 
@@ -117,19 +158,18 @@ def dev():
             arquivo.close()
             arquivo = open(projetos + '/' + projetoStr + '/' + file, 'r')
             arquivo = arquivo.read()
-            aviso = 'Arquivo salvo'
+            aviso = filesaved
             flash = False
 
         if flash:
-            aviso = 'Flash concluido'
+            aviso = flashok
         erro = None
         arquivos = []
         for filename in os.listdir(projetos + "/" + projetoStr):
             arquivos.append(filename)
 
-
         return render_template("dev.html", projeto=projetoStr, arquivo=arquivo, file=file, erro=erro, arquivos=arquivos,
-                               aviso=aviso)
+                               aviso=aviso, warning=warning, error=error, back=back, editor=editor)
     else:
         return redirect(url_for("projeto"))
 
@@ -146,7 +186,7 @@ def verifConf():  # verifica se existe o arquivo conf.ini, se nao tiver ele cria
         with open(conf, 'r') as f:
             return 0
     except IOError:
-        config['DEFAULT'] = {'board': 'mk66fx1m0'}
+        config['DEFAULT'] = {'board': 'mk66fx1m0', 'lang': 'EN'}
         with open(conf, 'w') as configfile:
             config.write(configfile)
         return 1

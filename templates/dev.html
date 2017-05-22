@@ -67,16 +67,16 @@
     <div>
         <div style="width: 700px;" class="ui card centerDiv">
           <div class="content">
-              <div class="header">Editor: {{ file }}
+              <div class="header">{{ editor }}: {{ file }}
               {% if erro %}
-                        <h5 style="margin-top: 10px; padding: 3px;" class="ui red message"><strong>Erro:</strong> {{ erro }}</h5>
+                        <h5 style="margin-top: 10px; padding: 3px;" class="ui red message"><strong>{{ error }}:</strong> {{ erro }}</h5>
               {% endif %}
               {% if aviso %}
-                        <h5 style="margin-top: 10px; padding: 3px;" class="ui green message"><strong>Aviso:</strong> {{ aviso }}</h5>
+                        <h5 style="margin-top: 10px; padding: 3px;" class="ui green message"><strong>{{ warning }}:</strong> {{ aviso }}</h5>
               {% endif %}
               </div>
               <div>
-                  <div class="ui extra content">
+                  <div style="margin-top: 5px" class="ui extra content">
                       <form action="" id="textform" method="post">
                             <p><textarea name="code" id="codemirror" title="Editor">{{ arquivo }}</textarea></p>
                             <input class="ui teal button" type="submit" value="Save">
@@ -90,14 +90,14 @@
         </div>
         <div style=" width: 250px" class="ui card centerDiv2">
           <div class="content">
-              <div class="header">Projeto: {{ projeto }}
+              <div class="header">{{ projeto }}
               </div><br>
               {% for i in arquivos %}
                   <a href="dev?projeto={{ projeto }}&file={{ i }}"><h5>{{ i }}</h5></a><br>
               {% endfor %}
               <div>
                  <div class="extra content">
-                     <a href="projeto"><button class="ui teal button">Voltar</button></a>
+                     <a href="projeto"><button class="ui teal button">{{ back }}</button></a>
                  </div>
             </div>
           </div>
