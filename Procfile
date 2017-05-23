@@ -1,1 +1,1 @@
-web heroku Pyrm:app
+web: gunicorn Pyrm:app
