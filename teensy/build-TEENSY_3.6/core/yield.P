@@ -1,2 +1,0 @@
-build-TEENSY_3.6/core/yield.o: core/yield.c
-core/yield.c :

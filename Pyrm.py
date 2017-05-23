@@ -11,7 +11,7 @@ path = os.path.dirname(os.path.abspath(__file__))
 
 # Config data
 app = Flask(__name__)
-
+global contador
 # Caminho das Pastas
 if _platform == "linux" or _platform == "linux2":  # linux
     projetos = path + "/Projects"
@@ -26,6 +26,7 @@ elif _platform == "darwin":  # MAC OS X
     loader = path + "/teensy/teensy_loader_cli"
     lang = path + '/lang.ini'
     conf = path + '/config.ini'
+    teensy = path + '/Micropython/teensy'
     config = configparser.ConfigParser()
 elif _platform == "win32":  # Windows
     projetos = path + "\Projects"
@@ -33,8 +34,11 @@ elif _platform == "win32":  # Windows
     loader = path + "\teensy\teensy_loader_cli"
     conf = path + '\config.ini'
     lang = path + '\lang.ini'
+    teensy = path + '\Micropython\teensy'
     config = configparser.ConfigParser()
 
+
+contador = 0
 
 @app.route("/")  # Welcome Screen
 def index():
@@ -66,6 +70,7 @@ def board():
 
 @app.route("/projeto", methods=['GET', 'POST'])  # Project Screen
 def projeto():
+
     config = configparser.ConfigParser()
     config.read(conf)
     language = config.get('DEFAULT', 'LANG')
@@ -132,6 +137,7 @@ def projeto():
 
 @app.route("/dev", methods=['GET', 'POST'])  # Board Screen
 def dev():
+    global contador
     config = configparser.ConfigParser()
     config.read(conf)
     language = config.get('DEFAULT', 'LANG')
@@ -142,6 +148,8 @@ def dev():
     warning = config.get(language, 'warning')
     filesaved = config.get(language, 'filesaved')
     flashok = config.get(language, 'flashok')
+
+    boardok = config.get(language, 'boardok')
 
     projetoStr = request.args.get('projeto', '', type=str)
     file = request.args.get('file', '', type=str)
@@ -164,7 +172,69 @@ def dev():
             flash = False
 
         if flash:
-            aviso = flashok
+            config.read(conf)
+            board = config.get(language, 'board')
+
+            if board == 'mk66fx1m0':
+                from subprocess import Popen, PIPE
+                print teensy + 'scripts/main.py'
+                print projetos + '/' + projetoStr + '/main.py'
+                shutil.copyfile(projetos + '/' + projetoStr + '/main.py', teensy + '/scripts/main.py')
+                shutil.copyfile(projetos + '/' + projetoStr + '/boot.py', teensy + '/scripts/boot.py')
+                cmd = 'make --directory ' + teensy + ' BOARD=TEENSY_3.6'
+                print cmd
+                proc = Popen(cmd, shell=True, bufsize=1, stdout=PIPE)
+
+                # ./teensy_loader_cli --mcu=mk66fx1m0 -w micropython.hex
+                cmd2 =loader + ' --mcu=' + board + ' -w ' + teensy + '/build-TEENSY_3.6/micropython.hex'
+                print cmd2
+                os.popen(cmd2, 'w')
+                contador = contador + 1
+                if contador == 1:
+                    aviso = boardok
+                elif contador == 2:
+                    aviso = flashok
+                    contador = 0
+            elif board == 'mk64fx512':
+                from subprocess import Popen, PIPE
+                print teensy + 'scripts/main.py'
+                print projetos + '/' + projetoStr + '/main.py'
+                shutil.copyfile(projetos + '/' + projetoStr + '/main.py', teensy + '/scripts/main.py')
+                shutil.copyfile(projetos + '/' + projetoStr + '/boot.py', teensy + '/scripts/boot.py')
+                cmd = 'make --directory ' + teensy + ' BOARD=TEENSY_3.6'
+                print cmd
+                proc = Popen(cmd, shell=True, bufsize=1, stdout=PIPE)
+
+                # ./teensy_loader_cli --mcu=mk64fx512 -w micropython.hex
+                cmd2 =loader + ' --mcu=' + board + ' -w ' + teensy + '/build-TEENSY_3.6/micropython.hex'
+                print cmd2
+                os.popen(cmd2, 'w')
+                contador = contador + 1
+                if contador == 1:
+                    aviso = boardok
+                elif contador == 2:
+                    aviso = flashok
+                    contador = 0
+            elif board == 'mk20dx256':
+                from subprocess import Popen, PIPE
+                print teensy + 'scripts/main.py'
+                print projetos + '/' + projetoStr + '/main.py'
+                shutil.copyfile(projetos + '/' + projetoStr + '/main.py', teensy + '/scripts/main.py')
+                shutil.copyfile(projetos + '/' + projetoStr + '/boot.py', teensy + '/scripts/boot.py')
+                cmd = 'make --directory ' + teensy + ' BOARD=TEENSY_3.6'
+                print cmd
+                proc = Popen(cmd, shell=True, bufsize=1, stdout=PIPE)
+
+                # ./teensy_loader_cli --mcu=mk20dx256 -w micropython.hex
+                cmd2 = loader + ' --mcu=' + board + ' -w ' + teensy + '/build-TEENSY_3.6/micropython.hex'
+                print cmd2
+                os.popen(cmd2, 'w')
+                contador = contador + 1
+                if contador == 1:
+                    aviso = boardok
+                elif contador == 2:
+                    aviso = flashok
+                    contador = 0
         erro = None
         arquivos = []
         for filename in os.listdir(projetos + "/" + projetoStr):
