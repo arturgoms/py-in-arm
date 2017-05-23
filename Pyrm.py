@@ -24,7 +24,7 @@ if _platform == "linux" or _platform == "linux2":  # linux
 elif _platform == "darwin":  # MAC OS X
     projetos = path + "/Projects"
     script = path + '/script'
-    loader = path + "/framework/teensy/teensy_loader_cli"
+    loader = path + "/micropython/teensy/teensy_loader_cli"
     lang = path + '/lang.ini'
     conf = path + '/config.ini'
     teensy = path + '/micropython/teensy'
