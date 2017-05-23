@@ -1,0 +1,366 @@
+   1               		.file	"rebootor.c"
+   2               	__SP_H__ = 0x3e
+   3               	__SP_L__ = 0x3d
+   4               	__SREG__ = 0x3f
+   5               	__tmp_reg__ = 0
+   6               	__zero_reg__ = 1
+   7               		.text
+   8               	.Ltext0:
+   9               		.cfi_sections	.debug_frame
+  10               		.section	.text.startup.main,"ax",@progbits
+  11               	.global	main
+  13               	main:
+  14               	.LFB6:
+  15               		.file 1 "rebootor.c"
+   1:rebootor.c    **** /* Teensy Rebootor
+   2:rebootor.c    ****  * http://www.pjrc.com/teensy
+   3:rebootor.c    ****  * Copyright (c) 2010 PJRC.COM, LLC
+   4:rebootor.c    ****  * 
+   5:rebootor.c    ****  * Permission is hereby granted, free of charge, to any person obtaining a copy
+   6:rebootor.c    ****  * of this software and associated documentation files (the "Software"), to deal
+   7:rebootor.c    ****  * in the Software without restriction, including without limitation the rights
+   8:rebootor.c    ****  * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+   9:rebootor.c    ****  * copies of the Software, and to permit persons to whom the Software is
+  10:rebootor.c    ****  * furnished to do so, subject to the following conditions:
+  11:rebootor.c    ****  * 
+  12:rebootor.c    ****  * The above description, website URL and copyright notice and this permission
+  13:rebootor.c    ****  * notice shall be included in all copies or substantial portions of the Software.
+  14:rebootor.c    ****  * 
+  15:rebootor.c    ****  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  16:rebootor.c    ****  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  17:rebootor.c    ****  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  18:rebootor.c    ****  * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  19:rebootor.c    ****  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+  20:rebootor.c    ****  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+  21:rebootor.c    ****  * THE SOFTWARE.
+  22:rebootor.c    ****  */
+  23:rebootor.c    **** 
+  24:rebootor.c    **** #include <avr/io.h>
+  25:rebootor.c    **** #include <avr/sleep.h>
+  26:rebootor.c    **** #include <avr/interrupt.h>
+  27:rebootor.c    **** #include <util/delay.h>
+  28:rebootor.c    **** #include "usb.h"
+  29:rebootor.c    **** 
+  30:rebootor.c    **** #define CPU_PRESCALE(n)	(CLKPR = 0x80, CLKPR = (n))
+  31:rebootor.c    **** 
+  32:rebootor.c    **** int main(void)
+  33:rebootor.c    **** {
+  16               		.loc 1 33 0
+  17               		.cfi_startproc
+  18               	/* prologue: function */
+  19               	/* frame size = 0 */
+  20               	/* stack size = 0 */
+  21               	.L__stack_usage = 0
+  34:rebootor.c    **** 	// set for 1 MHz clock
+  35:rebootor.c    **** 	CPU_PRESCALE(4);
+  22               		.loc 1 35 0
+  23 0000 80E8      		ldi r24,lo8(-128)
+  24 0002 8093 6100 		sts 97,r24
+  25 0006 84E0      		ldi r24,lo8(4)
+  26 0008 8093 6100 		sts 97,r24
+  36:rebootor.c    **** 
+  37:rebootor.c    **** 	// set all pins as inputs with pullup resistors
+  38:rebootor.c    **** 	#if defined(PORTA)
+  39:rebootor.c    **** 	DDRF = 0;
+  40:rebootor.c    **** 	PORTF = 0xFF;
+  41:rebootor.c    **** 	#endif
+  42:rebootor.c    **** 	DDRB = 0;
+  27               		.loc 1 42 0
+  28 000c 14B8      		out 0x4,__zero_reg__
+  43:rebootor.c    **** 	PORTB = 0xFF;
+  29               		.loc 1 43 0
+  30 000e 8FEF      		ldi r24,lo8(-1)
+  31 0010 85B9      		out 0x5,r24
+  44:rebootor.c    **** 	DDRC = 0;
+  32               		.loc 1 44 0
+  33 0012 17B8      		out 0x7,__zero_reg__
+  45:rebootor.c    **** 	PORTC = 0xFF;
+  34               		.loc 1 45 0
+  35 0014 88B9      		out 0x8,r24
+  46:rebootor.c    **** 	DDRD = 0;
+  36               		.loc 1 46 0
+  37 0016 1AB8      		out 0xa,__zero_reg__
+  47:rebootor.c    **** 	PORTD = 0xFF;
+  38               		.loc 1 47 0
+  39 0018 8BB9      		out 0xb,r24
+  48:rebootor.c    **** 	#if defined(PORTE)
+  49:rebootor.c    **** 	DDRE = 0;
+  40               		.loc 1 49 0
+  41 001a 1DB8      		out 0xd,__zero_reg__
+  50:rebootor.c    **** 	PORTE = 0xFF;
+  42               		.loc 1 50 0
+  43 001c 8EB9      		out 0xe,r24
+  51:rebootor.c    **** 	#endif
+  52:rebootor.c    **** 	#if defined(PORTF)
+  53:rebootor.c    **** 	DDRF = 0;
+  44               		.loc 1 53 0
+  45 001e 10BA      		out 0x10,__zero_reg__
+  54:rebootor.c    **** 	PORTF = 0xFF;
+  46               		.loc 1 54 0
+  47 0020 81BB      		out 0x11,r24
+  55:rebootor.c    **** 	#endif
+  56:rebootor.c    **** 
+  57:rebootor.c    **** 	// initialize USB
+  58:rebootor.c    **** 	usb_init();
+  48               		.loc 1 58 0
+  49 0022 0E94 0000 		call usb_init
+  50               	.LVL0:
+  51               	.L2:
+  52               	.LBB4:
+  53               	.LBB5:
+  54               		.file 2 "/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h"
+   1:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h **** /* Copyright (c) 2002, Marek Michalkiewicz
+   2:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h ****    Copyright (c) 2004,2005,2007 Joerg Wunsch
+   3:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h ****    Copyright (c) 2007  Florin-Viorel Petrov
+   4:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h ****    All rights reserved.
+   5:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h **** 
+   6:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h ****    Redistribution and use in source and binary forms, with or without
+   7:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h ****    modification, are permitted provided that the following conditions are met:
+   8:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h **** 
+   9:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h ****    * Redistributions of source code must retain the above copyright
+  10:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h ****      notice, this list of conditions and the following disclaimer.
+  11:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h **** 
+  12:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h ****    * Redistributions in binary form must reproduce the above copyright
+  13:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h ****      notice, this list of conditions and the following disclaimer in
+  14:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h ****      the documentation and/or other materials provided with the
+  15:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h ****      distribution.
+  16:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h **** 
+  17:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h ****    * Neither the name of the copyright holders nor the names of
+  18:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h ****      contributors may be used to endorse or promote products derived
+  19:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h ****      from this software without specific prior written permission.
+  20:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h **** 
+  21:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h ****   THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+  22:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h ****   AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+  23:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h ****   IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+  24:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h ****   ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE
+  25:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h ****   LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+  26:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h ****   CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+  27:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h ****   SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+  28:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h ****   INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+  29:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h ****   CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+  30:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h ****   ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+  31:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h ****   POSSIBILITY OF SUCH DAMAGE. */
+  32:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h **** 
+  33:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h **** /* $Id: delay.h.in 2506 2016-02-08 10:05:45Z joerg_wunsch $ */
+  34:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h **** 
+  35:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h **** #ifndef _UTIL_DELAY_H_
+  36:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h **** #define _UTIL_DELAY_H_ 1
+  37:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h **** 
+  38:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h **** #ifndef __DOXYGEN__
+  39:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h **** #  ifndef __HAS_DELAY_CYCLES
+  40:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h **** #    define __HAS_DELAY_CYCLES 1
+  41:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h **** #  endif
+  42:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h **** #endif  /* __DOXYGEN__ */
+  43:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h **** 
+  44:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h **** #include <inttypes.h>
+  45:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h **** #include <util/delay_basic.h>
+  46:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h **** #include <math.h>
+  47:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h **** 
+  48:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h **** /** \file */
+  49:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h **** /** \defgroup util_delay <util/delay.h>: Convenience functions for busy-wait delay loops
+  50:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h ****     \code
+  51:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h ****     #define F_CPU 1000000UL  // 1 MHz
+  52:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h ****     //#define F_CPU 14.7456E6
+  53:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h ****     #include <util/delay.h>
+  54:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h ****     \endcode
+  55:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h **** 
+  56:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h ****     \note As an alternative method, it is possible to pass the
+  57:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h ****     F_CPU macro down to the compiler from the Makefile.
+  58:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h ****     Obviously, in that case, no \c \#define statement should be
+  59:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h ****     used.
+  60:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h **** 
+  61:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h ****     The functions in this header file are wrappers around the basic
+  62:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h ****     busy-wait functions from <util/delay_basic.h>.  They are meant as
+  63:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h ****     convenience functions where actual time values can be specified
+  64:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h ****     rather than a number of cycles to wait for.  The idea behind is
+  65:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h ****     that compile-time constant expressions will be eliminated by
+  66:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h ****     compiler optimization so floating-point expressions can be used
+  67:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h ****     to calculate the number of delay cycles needed based on the CPU
+  68:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h ****     frequency passed by the macro F_CPU.
+  69:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h **** 
+  70:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h ****     \note In order for these functions to work as intended, compiler
+  71:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h ****     optimizations <em>must</em> be enabled, and the delay time
+  72:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h ****     <em>must</em> be an expression that is a known constant at
+  73:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h ****     compile-time.  If these requirements are not met, the resulting
+  74:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h ****     delay will be much longer (and basically unpredictable), and
+  75:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h ****     applications that otherwise do not use floating-point calculations
+  76:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h ****     will experience severe code bloat by the floating-point library
+  77:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h ****     routines linked into the application.
+  78:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h **** 
+  79:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h ****     The functions available allow the specification of microsecond, and
+  80:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h ****     millisecond delays directly, using the application-supplied macro
+  81:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h ****     F_CPU as the CPU clock frequency (in Hertz).
+  82:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h **** 
+  83:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h **** */
+  84:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h **** 
+  85:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h **** #if !defined(__DOXYGEN__)
+  86:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h **** static __inline__ void _delay_us(double __us) __attribute__((__always_inline__));
+  87:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h **** static __inline__ void _delay_ms(double __ms) __attribute__((__always_inline__));
+  88:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h **** #endif
+  89:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h **** 
+  90:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h **** #ifndef F_CPU
+  91:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h **** /* prevent compiler error by supplying a default */
+  92:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h **** # warning "F_CPU not defined for <util/delay.h>"
+  93:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h **** /** \ingroup util_delay
+  94:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h ****     \def F_CPU
+  95:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h ****     \brief CPU frequency in Hz
+  96:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h **** 
+  97:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h ****     The macro F_CPU specifies the CPU frequency to be considered by
+  98:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h ****     the delay macros.  This macro is normally supplied by the
+  99:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h ****     environment (e.g. from within a project header, or the project's
+ 100:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h ****     Makefile).  The value 1 MHz here is only provided as a "vanilla"
+ 101:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h ****     fallback if no such user-provided definition could be found.
+ 102:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h **** 
+ 103:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h ****     In terms of the delay functions, the CPU frequency can be given as
+ 104:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h ****     a floating-point constant (e.g. 3.6864E6 for 3.6864 MHz).
+ 105:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h ****     However, the macros in <util/setbaud.h> require it to be an
+ 106:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h ****     integer value.
+ 107:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h ****  */
+ 108:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h **** # define F_CPU 1000000UL
+ 109:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h **** #endif
+ 110:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h **** 
+ 111:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h **** #ifndef __OPTIMIZE__
+ 112:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h **** # warning "Compiler optimizations disabled; functions from <util/delay.h> won't work as designed"
+ 113:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h **** #endif
+ 114:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h **** 
+ 115:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h **** #if __HAS_DELAY_CYCLES && defined(__OPTIMIZE__) && \
+ 116:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h ****   !defined(__DELAY_BACKWARD_COMPATIBLE__) &&	   \
+ 117:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h ****   __STDC_HOSTED__
+ 118:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h **** #  include <math.h>
+ 119:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h **** #endif
+ 120:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h **** 
+ 121:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h **** /**
+ 122:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h ****    \ingroup util_delay
+ 123:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h **** 
+ 124:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h ****    Perform a delay of \c __ms milliseconds, using _delay_loop_2().
+ 125:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h **** 
+ 126:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h ****    The macro F_CPU is supposed to be defined to a
+ 127:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h ****    constant defining the CPU clock frequency (in Hertz).
+ 128:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h **** 
+ 129:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h ****    The maximal possible delay is 262.14 ms / F_CPU in MHz.
+ 130:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h **** 
+ 131:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h ****    When the user request delay which exceed the maximum possible one,
+ 132:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h ****    _delay_ms() provides a decreased resolution functionality. In this
+ 133:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h ****    mode _delay_ms() will work with a resolution of 1/10 ms, providing
+ 134:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h ****    delays up to 6.5535 seconds (independent from CPU frequency).  The
+ 135:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h ****    user will not be informed about decreased resolution.
+ 136:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h **** 
+ 137:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h ****    If the avr-gcc toolchain has __builtin_avr_delay_cycles()
+ 138:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h ****    support, maximal possible delay is 4294967.295 ms/ F_CPU in MHz. For
+ 139:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h ****    values greater than the maximal possible delay, overflows results in
+ 140:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h ****    no delay i.e., 0ms.
+ 141:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h **** 
+ 142:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h ****    Conversion of \c __ms into clock cycles may not always result in
+ 143:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h ****    integer.  By default, the clock cycles rounded up to next
+ 144:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h ****    integer. This ensures that the user gets at least \c __ms
+ 145:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h ****    microseconds of delay.
+ 146:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h **** 
+ 147:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h ****    Alternatively, by defining the macro \c __DELAY_ROUND_DOWN__, or
+ 148:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h ****    \c __DELAY_ROUND_CLOSEST__, before including this header file, the
+ 149:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h ****    algorithm can be made to round down, or round to closest integer,
+ 150:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h ****    respectively.
+ 151:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h **** 
+ 152:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h ****    \note
+ 153:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h **** 
+ 154:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h ****    The implementation of _delay_ms() based on
+ 155:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h ****    __builtin_avr_delay_cycles() is not backward compatible with older
+ 156:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h ****    implementations.  In order to get functionality backward compatible
+ 157:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h ****    with previous versions, the macro \c "__DELAY_BACKWARD_COMPATIBLE__"
+ 158:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h ****    must be defined before including this header file. Also, the
+ 159:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h ****    backward compatible algorithm will be chosen if the code is
+ 160:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h ****    compiled in a <em>freestanding environment</em> (GCC option
+ 161:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h ****    \c -ffreestanding), as the math functions required for rounding are
+ 162:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h ****    not available to the compiler then.
+ 163:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h **** 
+ 164:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h ****  */
+ 165:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h **** void
+ 166:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h **** _delay_ms(double __ms)
+ 167:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h **** {
+ 168:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h **** 	double __tmp ;
+ 169:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h **** #if __HAS_DELAY_CYCLES && defined(__OPTIMIZE__) && \
+ 170:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h ****   !defined(__DELAY_BACKWARD_COMPATIBLE__) &&	   \
+ 171:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h ****   __STDC_HOSTED__
+ 172:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h **** 	uint32_t __ticks_dc;
+ 173:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h **** 	extern void __builtin_avr_delay_cycles(unsigned long);
+ 174:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h **** 	__tmp = ((F_CPU) / 1e3) * __ms;
+ 175:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h **** 
+ 176:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h **** 	#if defined(__DELAY_ROUND_DOWN__)
+ 177:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h **** 		__ticks_dc = (uint32_t)fabs(__tmp);
+ 178:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h **** 
+ 179:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h **** 	#elif defined(__DELAY_ROUND_CLOSEST__)
+ 180:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h **** 		__ticks_dc = (uint32_t)(fabs(__tmp)+0.5);
+ 181:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h **** 
+ 182:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h **** 	#else
+ 183:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h **** 		//round up by default
+ 184:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h **** 		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+ 185:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h **** 	#endif
+ 186:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h **** 
+ 187:/usr/local/Cellar/avr-gcc/6.3.0/avr/include/util/delay.h **** 	__builtin_avr_delay_cycles(__ticks_dc);
+  55               		.loc 2 187 0 discriminator 1
+  56 0026 89EF      		ldi r24,lo8(249)
+  57 0028 90E0      		ldi r25,hi8(249)
+  58 002a 0197      	1:	sbiw r24,1
+  59 002c 01F4      		brne 1b
+  60 002e 00C0      		rjmp .
+  61 0030 0000      		nop
+  62               	.LVL1:
+  63               	.LBE5:
+  64               	.LBE4:
+  59:rebootor.c    **** 
+  60:rebootor.c    **** 	// do nothing (USB code handles reboot message)
+  61:rebootor.c    **** 	while (1) {
+  62:rebootor.c    **** 		_delay_ms(1);
+  63:rebootor.c    **** 		// put the CPU into low power idle mode
+  64:rebootor.c    **** 		set_sleep_mode(SLEEP_MODE_IDLE);
+  65               		.loc 1 64 0 discriminator 1
+  66 0032 83B7      		in r24,0x33
+  67 0034 817F      		andi r24,lo8(-15)
+  68 0036 83BF      		out 0x33,r24
+  65:rebootor.c    **** 		cli();
+  69               		.loc 1 65 0 discriminator 1
+  70               	/* #APP */
+  71               	 ;  65 "rebootor.c" 1
+  72 0038 F894      		cli
+  73               	 ;  0 "" 2
+  66:rebootor.c    **** 		sleep_enable();
+  74               		.loc 1 66 0 discriminator 1
+  75               	/* #NOAPP */
+  76 003a 83B7      		in r24,0x33
+  77 003c 8160      		ori r24,lo8(1)
+  78 003e 83BF      		out 0x33,r24
+  67:rebootor.c    **** 		sei();
+  79               		.loc 1 67 0 discriminator 1
+  80               	/* #APP */
+  81               	 ;  67 "rebootor.c" 1
+  82 0040 7894      		sei
+  83               	 ;  0 "" 2
+  68:rebootor.c    **** 		sleep_cpu();
+  84               		.loc 1 68 0 discriminator 1
+  85               	 ;  68 "rebootor.c" 1
+  86 0042 8895      		sleep
+  87               		
+  88               	 ;  0 "" 2
+  69:rebootor.c    **** 		sleep_disable();
+  89               		.loc 1 69 0 discriminator 1
+  90               	/* #NOAPP */
+  91 0044 83B7      		in r24,0x33
+  92 0046 8E7F      		andi r24,lo8(-2)
+  93 0048 83BF      		out 0x33,r24
+  94 004a 00C0      		rjmp .L2
+  95               		.cfi_endproc
+  96               	.LFE6:
+  98               		.text
+  99               	.Letext0:
+ 100               		.file 3 "/usr/local/Cellar/avr-gcc/6.3.0/avr/include/stdint.h"
+ 101               		.file 4 "usb.h"
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 rebootor.c
+/var/folders/49/mkb0yr8d03vdllc73bnyn9600000gn/T//cc2LkkKP.s:2      *ABS*:000000000000003e __SP_H__
+/var/folders/49/mkb0yr8d03vdllc73bnyn9600000gn/T//cc2LkkKP.s:3      *ABS*:000000000000003d __SP_L__
+/var/folders/49/mkb0yr8d03vdllc73bnyn9600000gn/T//cc2LkkKP.s:4      *ABS*:000000000000003f __SREG__
+/var/folders/49/mkb0yr8d03vdllc73bnyn9600000gn/T//cc2LkkKP.s:5      *ABS*:0000000000000000 __tmp_reg__
+/var/folders/49/mkb0yr8d03vdllc73bnyn9600000gn/T//cc2LkkKP.s:6      *ABS*:0000000000000001 __zero_reg__
+/var/folders/49/mkb0yr8d03vdllc73bnyn9600000gn/T//cc2LkkKP.s:13     .text.startup.main:0000000000000000 main
+
+UNDEFINED SYMBOLS
+usb_init
