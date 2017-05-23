@@ -4,8 +4,6 @@
   <br>
   <a href="http://www.amitmerchant.com/electron-markdownify"><img src="https://dl.dropboxusercontent.com/s/uylcf1b53pxcwik/Hexagon.png?dl=0" alt="Markdownify" width="200"></a>
   <br>
-  Pyrm
-  <br>
 </h1>
 
 <h4 align="center">Python IDE for ARM Processors based on<a href="https://github.com/micropython/micropython" target="_blank"> Micropython </a>framework.</h4>
