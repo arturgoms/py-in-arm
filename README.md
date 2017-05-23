@@ -39,7 +39,12 @@ It is an IDE created in Flask and based on the microPython framwork, everything 
 	Teensy 3.1
     Teensy 3.5
     Teensy 3.6
-
+    
+### Credits
+	Micropython Framework
+	Codemirror for editor 
+	Semantic UI
+ 
 ### Manual installation
 
 
