@@ -29,9 +29,9 @@ except:
 
         led.on()
 
-        pyb.delay(100)
+        pyb.delay(1000)
 
         led.off()
 
-        pyb.delay(100)
+        pyb.delay(1000)
 

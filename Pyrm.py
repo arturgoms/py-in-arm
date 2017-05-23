@@ -1,11 +1,9 @@
-from flask import Flask, request, url_for, redirect
 from flask import render_template
 from gevent.wsgi import WSGIServer
 import configparser, shutil
 import os
 from flask import Flask, request, redirect, url_for
 from sys import platform as _platform
-from werkzeug.utils import secure_filename
 
 path = os.path.dirname(os.path.abspath(__file__))
 
