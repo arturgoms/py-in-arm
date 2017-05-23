@@ -11,6 +11,22 @@
 <h4 align="center">Python IDE for ARM Processors based on<a href="https://github.com/micropython/micropython" target="_blank"> Microython </a>framework.</h4>
 
 <p align="center">
+  <a href="http://electron.atom.io">
+    <img src="https://img.shields.io/badge/IDE-Python-brightgreen.svg" alt="Electron">
+  </a>
+  <a href="https://badge.fury.io/js/electron-markdownify">
+    <img src="https://img.shields.io/badge/release-82%25-green.svg"
+         alt="Gitter">
+  </a>
+  <a href="https://gitter.im/amitmerchant1990/electron-markdownify"><img src="https://img.shields.io/badge/python-2.7-blue.svg"></a>
+
+  <a href="https://www.paypal.me/AmitMerchant">
+    <img src="https://img.shields.io/badge/$-donate-ff69b4.svg?maxAge=2592000&amp;style=flat">
+  </a>
+</p>
+<br>
+
+<p align="center">
  <img src="https://dl.dropboxusercontent.com/s/3os488hqdagf77b/Screen%20Shot%202017-05-22%20at%2016.49.51.png?dl=0" alt="SDVersion"/>
 </p>
 
