@@ -2,7 +2,7 @@
 
 <h1 align="center">
   <br>
-  <a href="http://www.amitmerchant.com/electron-markdownify"><img src="https://dl.dropboxusercontent.com/s/uylcf1b53pxcwik/Hexagon.png?dl=0" alt="Markdownify" width="200"></a>
+  <a href="https://github.com/arturgoms/Pyrm"><img src="https://dl.dropboxusercontent.com/s/uylcf1b53pxcwik/Hexagon.png?dl=0" alt="Markdownify" width="200"></a>
   <br>
 </h1>
 
