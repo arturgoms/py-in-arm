@@ -2,25 +2,25 @@
 
 <h1 align="center">
   <br>
-  <a href="http://www.amitmerchant.com/electron-markdownify"><img src="https://raw.githubusercontent.com/amitmerchant1990/electron-markdownify/master/img/markdownify.png" alt="Markdownify" width="200"></a>
+  <a href="http://www.amitmerchant.com/electron-markdownify"><img src="https://dl.dropboxusercontent.com/s/uylcf1b53pxcwik/Hexagon.png?dl=0" alt="Markdownify" width="200"></a>
   <br>
   Pyrm
   <br>
 </h1>
 
-<h4 align="center">Python IDE for ARM Processors based on<a href="https://github.com/micropython/micropython" target="_blank"> Microython </a>framework.</h4>
+<h4 align="center">Python IDE for ARM Processors based on<a href="https://github.com/micropython/micropython" target="_blank"> Micropython </a>framework.</h4>
 
 <p align="center">
-  <a href="http://electron.atom.io">
+  <a href="https://github.com/arturgoms/Pyrm">
     <img src="https://img.shields.io/badge/IDE-Python-brightgreen.svg" alt="Electron">
   </a>
-  <a href="https://badge.fury.io/js/electron-markdownify">
+  <a href="https://github.com/arturgoms/Pyrm/wiki">
     <img src="https://img.shields.io/badge/release-82%25-green.svg"
          alt="Gitter">
   </a>
-  <a href="https://gitter.im/amitmerchant1990/electron-markdownify"><img src="https://img.shields.io/badge/python-2.7-blue.svg"></a>
+  <a href="https://www.python.org/download/releases/2.7/"><img src="https://img.shields.io/badge/python-2.7-blue.svg"></a>
 
-  <a href="https://www.paypal.me/AmitMerchant">
+  <a href="https://www.paypal.me/t">
     <img src="https://img.shields.io/badge/$-donate-ff69b4.svg?maxAge=2592000&amp;style=flat">
   </a>
 </p>
@@ -34,7 +34,7 @@
 
 ## How it works
 
-It is an IDE created in Flask and based on the microPython framwork, everything was done in html and css, some parts in javascript and it was also used the librarian Codemirror for the syntax in the python editor.
+It is an IDE created in Flask and based on the microPython framwork, everything was done in html and css, some parts in javascript and it was also used the library Codemirror for the syntax in the python editor.
 
 ### Support ( for now )
 
@@ -42,7 +42,6 @@ It is an IDE created in Flask and based on the microPython framwork, everything 
     Teensy 3.5
     Teensy 3.6
 
-###
 ### Manual installation
 
 
