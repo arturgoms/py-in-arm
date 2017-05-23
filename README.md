@@ -25,7 +25,7 @@
 <br>
 
 <p align="center">
- <img src="https://dl.dropboxusercontent.com/s/3os488hqdagf77b/Screen%20Shot%202017-05-22%20at%2016.49.51.png?dl=0" alt="SDVersion"/>
+ <img src="https://dl.dropboxusercontent.com/s/za2scs6mfhyf5xe/pyrmGrid.png?dl=0" alt="SDVersion"/>
 </p>
 
 
