@@ -1,9 +1,18 @@
 
+
+<h1 align="center">
+  <br>
+  <a href="http://www.amitmerchant.com/electron-markdownify"><img src="https://raw.githubusercontent.com/amitmerchant1990/electron-markdownify/master/img/markdownify.png" alt="Markdownify" width="200"></a>
+  <br>
+  Pyrm
+  <br>
+</h1>
+
+<h4 align="center">Python IDE for ARM Processors based on<a href="https://github.com/micropython/micropython" target="_blank"> Microython </a>framework.</h4>
+
 <p align="center">
  <img src="https://dl.dropboxusercontent.com/s/3os488hqdagf77b/Screen%20Shot%202017-05-22%20at%2016.49.51.png?dl=0" alt="SDVersion"/>
 </p>
-
-<p align="center">Python IDE for ARM Processors based on microPython framework.</p>
 
 
 
@@ -11,6 +20,13 @@
 
 It is an IDE created in Flask and based on the microPython framwork, everything was done in html and css, some parts in javascript and it was also used the librarian Codemirror for the syntax in the python editor.
 
+### Support ( for now )
+
+	Teensy 3.1
+    Teensy 3.5
+    Teensy 3.6
+
+###
 ### Manual installation
 
 
