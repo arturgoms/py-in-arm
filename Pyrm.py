@@ -16,25 +16,26 @@ global contador
 if _platform == "linux" or _platform == "linux2":  # linux
     projetos = path + "/Projects"
     script = path + '/script'
-    loader = path + "/teensy/teensy_loader_cli"
+    loader = path + "/framework/teensy/teensy_loader_cli"
     lang = path + '/lang.ini'
     conf = path + '/config.ini'
+    teensy = path + '/framework/teensy'
     config = configparser.ConfigParser()
 elif _platform == "darwin":  # MAC OS X
     projetos = path + "/Projects"
     script = path + '/script'
-    loader = path + "/teensy/teensy_loader_cli"
+    loader = path + "/framework/teensy/teensy_loader_cli"
     lang = path + '/lang.ini'
     conf = path + '/config.ini'
-    teensy = path + '/Micropython/teensy'
+    teensy = path + '/framework/teensy'
     config = configparser.ConfigParser()
 elif _platform == "win32":  # Windows
     projetos = path + "\Projects"
     script = path + '\script'
-    loader = path + "\teensy\teensy_loader_cli"
+    loader = path + "\framework\teensy\teensy_loader_cli"
     conf = path + '\config.ini'
     lang = path + '\lang.ini'
-    teensy = path + '\Micropython\teensy'
+    teensy = path + '\framework\teensy'
     config = configparser.ConfigParser()
 
 
