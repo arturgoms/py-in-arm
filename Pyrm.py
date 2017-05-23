@@ -264,5 +264,5 @@ def verifConf():  # verifica se existe o arquivo conf.ini, se nao tiver ele cria
 
 
 if __name__ == '__main__':
-    http_server = WSGIServer(('0.0.0.0', 1515), app)
+    http_server = WSGIServer(('0.0.0.0', 1414), app)
     http_server.serve_forever()
