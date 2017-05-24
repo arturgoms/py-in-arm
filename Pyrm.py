@@ -1,7 +1,8 @@
-from flask import render_template
+from flask import render_template, send_file, send_from_directory
+from flask_images import Images, resized_img_src
 from gevent.wsgi import WSGIServer
 import configparser, shutil
-import os
+import os, zipfile
 from flask import Flask, request, redirect, url_for
 from sys import platform as _platform
 
@@ -9,10 +10,12 @@ path = os.path.dirname(os.path.abspath(__file__))
 
 # Config data
 app = Flask(__name__)
+images = Images(app)
 global contador
 # Caminho das Pastas
 if _platform == "linux" or _platform == "linux2":  # linux
     projetos = path + "/Projects"
+    zip = path + "/zip"
     script = path + '/script'
     loader = path + "/micropython/teensy/teensy_loader_cli"
     lang = path + '/lang.ini'
@@ -21,6 +24,7 @@ if _platform == "linux" or _platform == "linux2":  # linux
     config = configparser.ConfigParser()
 elif _platform == "darwin":  # MAC OS X
     projetos = path + "/Projects"
+    zip = path + "/zip"
     script = path + '/script'
     loader = path + "/micropython/teensy/teensy_loader_cli"
     lang = path + '/lang.ini'
@@ -29,6 +33,7 @@ elif _platform == "darwin":  # MAC OS X
     config = configparser.ConfigParser()
 elif _platform == "win32":  # Windows
     projetos = path + "\Projects"
+    zip = path + "\zip"
     script = path + '\script'
     loader = path + "\micropython\teensy\teensy_loader_cli"
     conf = path + '\config.ini'
@@ -74,6 +79,7 @@ def projeto():
     config.read(conf)
     language = config.get('DEFAULT', 'LANG')
     config.read(lang)
+
     project = config.get(language, 'project')
     youselect = config.get(language, 'youselect')
     nameofproject = config.get(language, 'nameofproject')
@@ -147,13 +153,24 @@ def dev():
     warning = config.get(language, 'warning')
     filesaved = config.get(language, 'filesaved')
     flashok = config.get(language, 'flashok')
-
+    erroexists = config.get(language, 'erroexists')
+    errodontexists = config.get(language, 'errodontexists')
+    errorsomething = config.get(language, 'errorsomething')
     boardok = config.get(language, 'boardok')
 
     projetoStr = request.args.get('projeto', '', type=str)
     file = request.args.get('file', '', type=str)
     flash = request.args.get('flash', False, type=bool)
+    zipfiles = request.args.get('zip', False, type=bool)
+    newfile = request.args.get('newfile', '', type=str)
+    deletefile = request.args.get('deletefile', '', type=str)
+    editfile = request.args.get('editfile', '', type=str)
+    newfolder = request.args.get('newfolder', '', type=str)
+    deletefolder = request.args.get('deletefolder', '', type=str)
+    editfolder = request.args.get('editfolder', '', type=str)
+
     aviso = None
+    erro = None
     if projetoStr == '':
         return redirect(url_for("projeto"))
     if file != '':
@@ -169,7 +186,52 @@ def dev():
             arquivo = arquivo.read()
             aviso = filesaved
             flash = False
+        if newfolder != '':
+            if newfolder != 'null':
+                if not os.path.exists(projetos + '/' + projetoStr + '/' + newfolder):
+                    os.makedirs(projetos + '/' + projetoStr + '/' + newfolder)
+                else:
+                    erro = erroexists
+        if deletefolder != '':
+            if deletefolder != 'null':
+                if os.path.exists(projetos + '/' + projetoStr + '/' + deletefolder):
+                    shutil.rmtree(projetos + '/' + projetoStr + '/' + deletefolder)
+                else:
+                    erro = errodontexists
+        if editfolder != '':
+            if editfolder != 'null':
+                try:
+                    old, new = editfolder.split(',')
 
+                    if os.path.exists(projetos + '/' + projetoStr + '/' + old):
+                        os.renames(projetos + '/' + projetoStr + '/' + old, projetos + '/' + projetoStr + '/' + new)
+                    else:
+                        erro = errodontexists
+                except:
+                    erro = errorsomething
+        if newfile != '':
+            if newfile != 'null':
+                if not os.path.exists(projetos + '/' + projetoStr + '/' + newfile):
+                    open(projetos + '/' + projetoStr + '/' + newfile, 'w')
+                else:
+                    erro = erroexists
+        if deletefile != '':
+            if deletefile != 'null':
+                if os.path.exists(projetos + '/' + projetoStr + '/' + deletefile):
+                    os.remove(projetos + '/' + projetoStr + '/' + deletefile)
+                else:
+                    erro = errodontexists
+        if editfile != '':
+            if editfile != 'null':
+                try:
+                    old, new = editfile.split(',')
+
+                    if os.path.exists(projetos + '/' + projetoStr + '/' + old):
+                        os.renames(projetos + '/' + projetoStr + '/' + old, projetos + '/' + projetoStr + '/' + new)
+                    else:
+                        erro = errodontexists
+                except:
+                    erro = errorsomething
         if flash:
             config.read(conf)
             board = config.get(language, 'board')
@@ -200,12 +262,12 @@ def dev():
                 print projetos + '/' + projetoStr + '/main.py'
                 shutil.copyfile(projetos + '/' + projetoStr + '/main.py', teensy + '/scripts/main.py')
                 shutil.copyfile(projetos + '/' + projetoStr + '/boot.py', teensy + '/scripts/boot.py')
-                cmd = 'make --directory ' + teensy + ' BOARD=TEENSY_3.6'
+                cmd = 'make --directory ' + teensy + ' BOARD=TEENSY_3.5'
                 print cmd
                 proc = Popen(cmd, shell=True, bufsize=1, stdout=PIPE)
 
                 # ./teensy_loader_cli --mcu=mk64fx512 -w micropython.hex
-                cmd2 =loader + ' --mcu=' + board + ' -w ' + teensy + '/build-TEENSY_3.6/micropython.hex'
+                cmd2 =loader + ' --mcu=' + board + ' -w ' + teensy + '/build-TEENSY_3.5/micropython.hex'
                 print cmd2
                 os.popen(cmd2, 'w')
                 contador = contador + 1
@@ -220,12 +282,12 @@ def dev():
                 print projetos + '/' + projetoStr + '/main.py'
                 shutil.copyfile(projetos + '/' + projetoStr + '/main.py', teensy + '/scripts/main.py')
                 shutil.copyfile(projetos + '/' + projetoStr + '/boot.py', teensy + '/scripts/boot.py')
-                cmd = 'make --directory ' + teensy + ' BOARD=TEENSY_3.6'
+                cmd = 'make --directory ' + teensy + ' BOARD=TEENSY_3.1'
                 print cmd
                 proc = Popen(cmd, shell=True, bufsize=1, stdout=PIPE)
 
                 # ./teensy_loader_cli --mcu=mk20dx256 -w micropython.hex
-                cmd2 = loader + ' --mcu=' + board + ' -w ' + teensy + '/build-TEENSY_3.6/micropython.hex'
+                cmd2 = loader + ' --mcu=' + board + ' -w ' + teensy + '/build-TEENSY_3.1/micropython.hex'
                 print cmd2
                 os.popen(cmd2, 'w')
                 contador = contador + 1
@@ -234,7 +296,13 @@ def dev():
                 elif contador == 2:
                     aviso = flashok
                     contador = 0
-        erro = None
+        if zipfiles:
+            zipfiles = False
+            zipf = zipfile.ZipFile(zip + '/' + projetoStr+'.zip', 'w', zipfile.ZIP_DEFLATED)
+            zipdir(zip, zipf)
+            zipf.close()
+            return send_from_directory(directory=zip, filename=projetoStr+'.zip', as_attachment=True)
+
         arquivos = []
         for filename in os.listdir(projetos + "/" + projetoStr):
             arquivos.append(filename)
@@ -263,6 +331,12 @@ def verifConf():  # verifica se existe o arquivo conf.ini, se nao tiver ele cria
         return 1
 
 
+def zipdir(path, ziph):
+    for root, dirs, files in os.walk(path):
+        for file in files:
+            ziph.write(os.path.join(root, file))
+
+
 if __name__ == '__main__':
-    http_server = WSGIServer(('0.0.0.0', 1414), app)
+    http_server = WSGIServer(('0.0.0.0', 8080), app)
     http_server.serve_forever()

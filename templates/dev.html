@@ -25,7 +25,7 @@
   top: 20%;
   left: 15%;
   /* bring your own prefixes */
-  transform: translate(-50%, -200%);
+  transform: translate(-50%, -150%);
     }
     </style>
     <script type="text/javascript">
@@ -49,6 +49,34 @@
                 //client.send();
                 //document.getElementById("demo").innerHTML = client.responseText;
              window.location = "/dev?projeto={{ projeto }}&file={{ file }}&flash=True";
+
+        }
+        function addFolder() {
+                name = prompt('{{ nameofproject }}');
+                window.location = "/dev?projeto={{ projeto }}&file={{ file }}&newfolder="+name;
+            }
+        function deleteFolder() {
+                name = prompt('{{ deleteproject }}');
+                window.location = "/dev?projeto={{ projeto }}&file={{ file }}&deletefolder="+name;
+            }
+        function editFolder() {
+                name = prompt('{{ renameproject }}');
+                window.location = "/dev?projeto={{ projeto }}&file={{ file }}&editfolder="+name;
+            }
+        function addFile() {
+                name = prompt('{{ nameofproject }}');
+                window.location = "/dev?projeto={{ projeto }}&file={{ file }}&newfile="+name;
+            }
+        function deleteFile() {
+                name = prompt('{{ deleteproject }}');
+                window.location = "/dev?projeto={{ projeto }}&file={{ file }}&deletefile="+name;
+            }
+        function editFile() {
+                name = prompt('{{ renameproject }}');
+                window.location = "/dev?projeto={{ projeto }}&file={{ file }}&editfile="+name;
+            }
+        function zip() {
+                window.location = "/dev?projeto={{ projeto }}&file={{ file }}&zip=True";
 
         }
         window.onload = function() {
@@ -82,7 +110,7 @@
                             <input class="ui teal button" type="submit" value="Save">
                       </form>
                       <div style="margin-left: 80px;margin-top: -35px" >
-                            <button onclick="flash()" class="ui teal button">Find</button> <button onclick="flash()" class="ui teal button">Flash</button>
+                            <button onclick="flash()" class="ui teal button">Find</button> <button onclick="flash()" class="ui teal button">Flash</button><button onclick="zip()" class="ui teal button">Download</button>
                       </div>
                   </div>
             </div>
@@ -90,10 +118,20 @@
         </div>
         <div style=" width: 250px" class="ui card centerDiv2">
           <div class="content">
-              <div class="header">{{ projeto }}
-              </div><br>
+              <center><div class="header"><h3>{{ projeto }}</h3>
+              </div></center><hr><center><div>
+              <a style="margin-left: 0px" onclick="addFolder()"><img src="../static/img/addfolder.png"></a>
+              <a style="margin-left: 10px" onclick="deleteFolder()"><img src="../static/img/delete.png"></a>
+              <a style="margin-left: 10px" onclick="editFolder()"><img src="../static/img/edit.png"></a>
+              <a style="margin-left: 10px" onclick="addFile()"><img src="../static/img/addfile.png"></a>
+              <a style="margin-left: 10px" onclick="deleteFile()"><img src="../static/img/deletefile.png"></a>
+              <a style="margin-left: 10px" onclick="editFile()"><img src="../static/img/editfile.png"></a>
+              {% if erro %}
+                        <p style="margin-top: 10px" class="ui red message"><strong>{{ error }}:</strong> {{ erro }}</p>
+              {% endif %}
+              </div></center><hr>
               {% for i in arquivos %}
-                  <a href="dev?projeto={{ projeto }}&file={{ i }}"><h5>{{ i }}</h5></a><br>
+                  <a href="dev?projeto={{ projeto }}&file={{ i }}"><h3>{{ i }}</h3></a><br>
               {% endfor %}
               <div>
                  <div class="extra content">
