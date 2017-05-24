@@ -9,7 +9,6 @@ itsdangerous==0.24
 Jinja2==2.9.6
 MarkupSafe==1.0
 olefile==0.44
-PIL==1.1.7
 Pillow==4.1.1
 pillowcase==2.0.0
 Werkzeug==0.12.2
