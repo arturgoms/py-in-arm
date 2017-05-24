@@ -119,6 +119,7 @@ def projeto():
         if delete != 'null':
             if os.path.exists(projetos + '/' + delete):
                 shutil.rmtree(projetos + '/' + delete)
+                #os.remove(projetos + '/' + delete)
             else:
                 erro = errodontexists
     if edit != '':
@@ -160,6 +161,7 @@ def dev():
 
     projetoStr = request.args.get('projeto', '', type=str)
     file = request.args.get('file', '', type=str)
+    folder = request.args.get('folder', '', type=str)
     flash = request.args.get('flash', False, type=bool)
     zipfiles = request.args.get('zip', False, type=bool)
     newfile = request.args.get('newfile', '', type=str)
@@ -171,13 +173,17 @@ def dev():
 
     aviso = None
     erro = None
-    if projetoStr == '':
-        return redirect(url_for("projeto"))
-    if file != '':
-        arquivo = open(projetos + '/' + projetoStr + '/' + file, 'r')
-        arquivo = arquivo.read()
 
-        if request.method == 'POST':
+    if file != '':
+        try:
+            arquivo = open(projetos + '/' + projetoStr + '/' + file, 'r')
+            arquivo = arquivo.read()
+        except:
+            arquivo = 'Selecione um arquivo'
+    else:
+        arquivo = 'Selecione um arquivo'
+    if request.method == 'POST':
+        if os.path.exists(projetos + '/' + projetoStr + '/' + file):
             arquivo = open(projetos + '/' + projetoStr + '/' + file, 'w')
             code = request.form["code"]
             arquivo.write(code)
@@ -186,131 +192,145 @@ def dev():
             arquivo = arquivo.read()
             aviso = filesaved
             flash = False
-        if newfolder != '':
-            if newfolder != 'null':
-                if not os.path.exists(projetos + '/' + projetoStr + '/' + newfolder):
-                    os.makedirs(projetos + '/' + projetoStr + '/' + newfolder)
-                else:
-                    erro = erroexists
-        if deletefolder != '':
-            if deletefolder != 'null':
-                if os.path.exists(projetos + '/' + projetoStr + '/' + deletefolder):
-                    shutil.rmtree(projetos + '/' + projetoStr + '/' + deletefolder)
-                else:
-                    erro = errodontexists
-        if editfolder != '':
-            if editfolder != 'null':
-                try:
-                    old, new = editfolder.split(',')
+        else:
+            aviso = 'Erro saving file'
+            flash = False
 
-                    if os.path.exists(projetos + '/' + projetoStr + '/' + old):
-                        os.renames(projetos + '/' + projetoStr + '/' + old, projetos + '/' + projetoStr + '/' + new)
-                    else:
-                        erro = errodontexists
-                except:
-                    erro = errorsomething
-        if newfile != '':
-            if newfile != 'null':
-                if not os.path.exists(projetos + '/' + projetoStr + '/' + newfile):
-                    open(projetos + '/' + projetoStr + '/' + newfile, 'w')
-                else:
-                    erro = erroexists
-        if deletefile != '':
-            if deletefile != 'null':
-                if os.path.exists(projetos + '/' + projetoStr + '/' + deletefile):
-                    os.remove(projetos + '/' + projetoStr + '/' + deletefile)
+
+    if newfolder != '':
+        if newfolder != 'null':
+            if not os.path.exists(projetos + '/' + projetoStr + '/' + newfolder):
+                os.makedirs(projetos + '/' + projetoStr + '/' + newfolder)
+            else:
+                erro = erroexists
+    if deletefolder != '':
+        if deletefolder != 'null':
+            if os.path.exists(projetos + '/' + projetoStr + '/' + deletefolder):
+                shutil.rmtree(projetos + '/' + projetoStr + '/' + deletefolder)
+            else:
+                erro = errodontexists
+    if editfolder != '':
+        if editfolder != 'null':
+            try:
+                old, new = editfolder.split(',')
+
+                if os.path.exists(projetos + '/' + projetoStr + '/' + old):
+                    os.renames(projetos + '/' + projetoStr + '/' + old, projetos + '/' + projetoStr + '/' + new)
                 else:
                     erro = errodontexists
-        if editfile != '':
-            if editfile != 'null':
-                try:
-                    old, new = editfile.split(',')
+            except:
+                erro = errorsomething
+    if newfile != '':
+        if newfile != 'null':
+            if not os.path.exists(projetos + '/' + projetoStr + '/' + newfile):
+                open(projetos + '/' + projetoStr + '/' + newfile, 'w')
+            else:
+                erro = erroexists
+    if deletefile != '':
+        if deletefile != 'null':
+            if os.path.exists(projetos + '/' + projetoStr + '/' + deletefile):
+                os.remove(projetos + '/' + projetoStr + '/' + deletefile)
+            else:
+                erro = errodontexists
+    if editfile != '':
+        if editfile != 'null':
+            try:
+                old, new = editfile.split(',')
 
-                    if os.path.exists(projetos + '/' + projetoStr + '/' + old):
-                        os.renames(projetos + '/' + projetoStr + '/' + old, projetos + '/' + projetoStr + '/' + new)
-                    else:
-                        erro = errodontexists
-                except:
-                    erro = errorsomething
-        if flash:
-            config.read(conf)
-            board = config.get(language, 'board')
+                if os.path.exists(projetos + '/' + projetoStr + '/' + old):
+                    os.renames(projetos + '/' + projetoStr + '/' + old, projetos + '/' + projetoStr + '/' + new)
+                else:
+                    erro = errodontexists
+            except:
+                erro = errorsomething
+    if flash:
+        config.read(conf)
+        board = config.get(language, 'board')
 
-            if board == 'mk66fx1m0':
-                from subprocess import Popen, PIPE
-                print teensy + 'scripts/main.py'
-                print projetos + '/' + projetoStr + '/main.py'
-                shutil.copyfile(projetos + '/' + projetoStr + '/main.py', teensy + '/scripts/main.py')
-                shutil.copyfile(projetos + '/' + projetoStr + '/boot.py', teensy + '/scripts/boot.py')
-                cmd = 'make --directory ' + teensy + ' BOARD=TEENSY_3.6'
-                print cmd
-                proc = Popen(cmd, shell=True, bufsize=1, stdout=PIPE)
+        if board == 'mk66fx1m0':
+            from subprocess import Popen, PIPE
+            print teensy + 'scripts/main.py'
+            print projetos + '/' + projetoStr + '/main.py'
+            shutil.copyfile(projetos + '/' + projetoStr + '/main.py', teensy + '/scripts/main.py')
+            shutil.copyfile(projetos + '/' + projetoStr + '/boot.py', teensy + '/scripts/boot.py')
+            cmd = 'make --directory ' + teensy + ' BOARD=TEENSY_3.6'
+            print cmd
+            proc = Popen(cmd, shell=True, bufsize=1, stdout=PIPE)
 
-                # ./teensy_loader_cli --mcu=mk66fx1m0 -w micropython.hex
-                cmd2 =loader + ' --mcu=' + board + ' -w ' + teensy + '/build-TEENSY_3.6/micropython.hex'
-                print cmd2
-                os.popen(cmd2, 'w')
-                contador = contador + 1
-                if contador == 1:
-                    aviso = boardok
-                elif contador == 2:
-                    aviso = flashok
-                    contador = 0
-            elif board == 'mk64fx512':
-                from subprocess import Popen, PIPE
-                print teensy + 'scripts/main.py'
-                print projetos + '/' + projetoStr + '/main.py'
-                shutil.copyfile(projetos + '/' + projetoStr + '/main.py', teensy + '/scripts/main.py')
-                shutil.copyfile(projetos + '/' + projetoStr + '/boot.py', teensy + '/scripts/boot.py')
-                cmd = 'make --directory ' + teensy + ' BOARD=TEENSY_3.5'
-                print cmd
-                proc = Popen(cmd, shell=True, bufsize=1, stdout=PIPE)
+            # ./teensy_loader_cli --mcu=mk66fx1m0 -w micropython.hex
+            cmd2 =loader + ' --mcu=' + board + ' -w ' + teensy + '/build-TEENSY_3.6/micropython.hex'
+            print cmd2
+            os.popen(cmd2, 'w')
+            contador = contador + 1
+            if contador == 1:
+                aviso = boardok
+            elif contador == 2:
+                aviso = flashok
+                contador = 0
+        elif board == 'mk64fx512':
+            from subprocess import Popen, PIPE
+            print teensy + 'scripts/main.py'
+            print projetos + '/' + projetoStr + '/main.py'
+            shutil.copyfile(projetos + '/' + projetoStr + '/main.py', teensy + '/scripts/main.py')
+            shutil.copyfile(projetos + '/' + projetoStr + '/boot.py', teensy + '/scripts/boot.py')
+            cmd = 'make --directory ' + teensy + ' BOARD=TEENSY_3.5'
+            print cmd
+            proc = Popen(cmd, shell=True, bufsize=1, stdout=PIPE)
 
-                # ./teensy_loader_cli --mcu=mk64fx512 -w micropython.hex
-                cmd2 =loader + ' --mcu=' + board + ' -w ' + teensy + '/build-TEENSY_3.5/micropython.hex'
-                print cmd2
-                os.popen(cmd2, 'w')
-                contador = contador + 1
-                if contador == 1:
-                    aviso = boardok
-                elif contador == 2:
-                    aviso = flashok
-                    contador = 0
-            elif board == 'mk20dx256':
-                from subprocess import Popen, PIPE
-                print teensy + 'scripts/main.py'
-                print projetos + '/' + projetoStr + '/main.py'
-                shutil.copyfile(projetos + '/' + projetoStr + '/main.py', teensy + '/scripts/main.py')
-                shutil.copyfile(projetos + '/' + projetoStr + '/boot.py', teensy + '/scripts/boot.py')
-                cmd = 'make --directory ' + teensy + ' BOARD=TEENSY_3.1'
-                print cmd
-                proc = Popen(cmd, shell=True, bufsize=1, stdout=PIPE)
+            # ./teensy_loader_cli --mcu=mk64fx512 -w micropython.hex
+            cmd2 =loader + ' --mcu=' + board + ' -w ' + teensy + '/build-TEENSY_3.5/micropython.hex'
+            print cmd2
+            os.popen(cmd2, 'w')
+            contador = contador + 1
+            if contador == 1:
+                aviso = boardok
+            elif contador == 2:
+                aviso = flashok
+                contador = 0
+        elif board == 'mk20dx256':
+            from subprocess import Popen, PIPE
+            print teensy + 'scripts/main.py'
+            print projetos + '/' + projetoStr + '/main.py'
+            shutil.copyfile(projetos + '/' + projetoStr + '/main.py', teensy + '/scripts/main.py')
+            shutil.copyfile(projetos + '/' + projetoStr + '/boot.py', teensy + '/scripts/boot.py')
+            cmd = 'make --directory ' + teensy + ' BOARD=TEENSY_3.1'
+            print cmd
+            proc = Popen(cmd, shell=True, bufsize=1, stdout=PIPE)
 
-                # ./teensy_loader_cli --mcu=mk20dx256 -w micropython.hex
-                cmd2 = loader + ' --mcu=' + board + ' -w ' + teensy + '/build-TEENSY_3.1/micropython.hex'
-                print cmd2
-                os.popen(cmd2, 'w')
-                contador = contador + 1
-                if contador == 1:
-                    aviso = boardok
-                elif contador == 2:
-                    aviso = flashok
-                    contador = 0
-        if zipfiles:
-            zipfiles = False
-            zipf = zipfile.ZipFile(zip + '/' + projetoStr+'.zip', 'w', zipfile.ZIP_DEFLATED)
-            zipdir(zip, zipf)
-            zipf.close()
-            return send_from_directory(directory=zip, filename=projetoStr+'.zip', as_attachment=True)
+            # ./teensy_loader_cli --mcu=mk20dx256 -w micropython.hex
+            cmd2 = loader + ' --mcu=' + board + ' -w ' + teensy + '/build-TEENSY_3.1/micropython.hex'
+            print cmd2
+            os.popen(cmd2, 'w')
+            contador = contador + 1
+            if contador == 1:
+                aviso = boardok
+            elif contador == 2:
+                aviso = flashok
+                contador = 0
+    if zipfiles:
+        zipfiles = False
+        zipf = zipfile.ZipFile(zip + '/' + projetoStr+'.zip', 'w', zipfile.ZIP_DEFLATED)
+        zipdir(zip, zipf)
+        zipf.close()
+        warning = "File Downloaded"
+        return send_from_directory(directory=zip, filename=projetoStr+'.zip', as_attachment=True)
 
-        arquivos = []
+    arquivos = []
+    pastas = []
+    if projetoStr != '':
         for filename in os.listdir(projetos + "/" + projetoStr):
-            arquivos.append(filename)
-
-        return render_template("dev.html", projeto=projetoStr, arquivo=arquivo, file=file, erro=erro, arquivos=arquivos,
-                               aviso=aviso, warning=warning, error=error, back=back, editor=editor)
+            w = os.path.isdir(projetos + "/" + projetoStr + "/" + filename)
+            if w:
+                pastas.append(filename)
+            else:
+                arquivos.append(filename)
     else:
         return redirect(url_for("projeto"))
+
+
+    return render_template("dev.html", projeto=projetoStr, arquivo=arquivo, file=file, erro=erro, arquivos=arquivos, pastas=pastas,
+                           aviso=aviso, warning=warning, error=error, back=back, editor=editor)
+
 
 
 def writeConf(section='DEFAULT', nome='nome', valor='NO'):  # funcao para escrever no arquivo conf.ini

@@ -22,10 +22,9 @@
   transform: translate(-50%, 5%);
     }    .centerDiv2{
   position: fixed;
-  top: 20%;
-  left: 15%;
+  top: -500px;
+  left: 5%;
   /* bring your own prefixes */
-  transform: translate(-50%, -150%);
     }
     </style>
     <script type="text/javascript">
@@ -79,10 +78,25 @@
                 window.location = "/dev?projeto={{ projeto }}&file={{ file }}&zip=True";
 
         }
+
+        function voltar() {
+              var projetoSplit = "{{ projeto }}".split('/');
+              var text = "";
+              var w;
+              for (w = 0; w < projetoSplit.length - 1; w++) {
+                if (w === projetoSplit.length - 2){
+                  text += projetoSplit[w]
+                }else {
+                  text += projetoSplit[w] + "/";
+                }}
+                window.location = "/dev?projeto=" + text;
+
+        }
         window.onload = function() {
             var editor = CodeMirror.fromTextArea(document.getElementById("codemirror"), {
                 lineNumbers: true,
                 theme: "solarized dark",
+                
                 mode: "python",
                 autofocus: true
             });
@@ -96,12 +110,7 @@
         <div style="width: 700px;" class="ui card centerDiv">
           <div class="content">
               <div class="header">{{ editor }}: {{ file }}
-              {% if erro %}
-                        <h5 style="margin-top: 10px; padding: 3px;" class="ui red message"><strong>{{ error }}:</strong> {{ erro }}</h5>
-              {% endif %}
-              {% if aviso %}
-                        <h5 style="margin-top: 10px; padding: 3px;" class="ui green message"><strong>{{ warning }}:</strong> {{ aviso }}</h5>
-              {% endif %}
+
               </div>
               <div>
                   <div style="margin-top: 5px" class="ui extra content">
@@ -127,11 +136,18 @@
               <a style="margin-left: 10px" onclick="deleteFile()"><img src="../static/img/deletefile.png"></a>
               <a style="margin-left: 10px" onclick="editFile()"><img src="../static/img/editfile.png"></a>
               {% if erro %}
-                        <p style="margin-top: 10px" class="ui red message"><strong>{{ error }}:</strong> {{ erro }}</p>
+                        <h5 style="margin-top: 10px; padding: 3px;" class="ui red message"><strong>{{ error }}:</strong> {{ erro }}</h5>
               {% endif %}
-              </div></center><hr>
+              {% if aviso %}
+                        <h5 style="margin-top: 10px; padding: 3px;" class="ui green message"><strong>{{ warning }}:</strong> {{ aviso }}</h5>
+              {% endif %}
+              </div></center><hr><div style="margin-top: -10px;margin-left: 0px" >
+              <a onclick="voltar()"><img src="../static/img/back.png"></a></div>
+              {% for p in pastas %}
+                  <div><img src="../static/img/directory.png"><a href="dev?projeto={{ projeto + '/' + p }}"><h3 style="margin-left: 30px;margin-top: -20px;" >{{ p }}</h3></a><br></div>
+              {% endfor %}
               {% for i in arquivos %}
-                  <a href="dev?projeto={{ projeto }}&file={{ i }}"><h3>{{ i }}</h3></a><br>
+                  <a href="dev?projeto={{ projeto  }}&file={{ i }}"><h3>{{ i }}</h3></a><br>
               {% endfor %}
               <div>
                  <div class="extra content">
