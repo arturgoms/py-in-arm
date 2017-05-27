@@ -1,1 +1,1 @@
-web: gunicorn Pyrm:app
+web: gunicorn PyinArm:app
