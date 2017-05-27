@@ -2,17 +2,17 @@
 
 <h1 align="center">
   <br>
-  <a href="https://github.com/arturgoms/Pyrm"><img src="https://dl.dropboxusercontent.com/s/uylcf1b53pxcwik/Hexagon.png?dl=0" alt="Markdownify" width="200"></a>
+  <a href="https://github.com/arturgoms/PyinArm"><img src="https://dl.dropboxusercontent.com/s/uylcf1b53pxcwik/Hexagon.png?dl=0" alt="Markdownify" width="200"></a>
   <br>
 </h1>
 
-<h4 align="center">Python IDE for ARM Processors based on<a href="https://github.com/micropython/micropython" target="_blank"> Micropython </a>framework. Here is the<a href="https://pyrm.herokuapp.com/" target="_blank"> Demo. </a> </h4>
+<h4 align="center">Python IDE for ARM Processors based on<a href="https://github.com/micropython/micropython" target="_blank"> Micropython </a>framework. Here is the<a href="https://pyinarm.herokuapp.com/" target="_blank"> Demo. </a> </h4>
 
 <p align="center">
-  <a href="https://github.com/arturgoms/Pyrm">
+  <a href="https://github.com/arturgoms/PyinArm">
     <img src="https://img.shields.io/badge/IDE-Python-brightgreen.svg" alt="Electron">
   </a>
-  <a href="https://github.com/arturgoms/Pyrm/wiki">
+  <a href="https://github.com/arturgoms/PyinArm/wiki">
     <img src="https://img.shields.io/badge/release-82%25-green.svg"
          alt="Gitter">
   </a>
@@ -50,7 +50,7 @@ It is an IDE created in Flask and based on the microPython framwork, everything 
 
  First you need to clone the directory:
  ```bash
-      git clone https://github.com/arturgoms/Pyrm.git
+      git clone https://github.com/arturgoms/PyinArm.git
  ```
 The next step is install all the dependencies( if you already have pip installed):
  ```bash
@@ -65,9 +65,9 @@ If dont ( Windows ):
  ```bash
       sudo easy_install pip
  ```
- After enter the directory you can now execute Pyrm.py:
+ After enter the directory you can now execute PyinArm.py:
  ```bash
-      sudo python Pyrm.py
+      sudo python PyinArm.py
  ```
 
 
