@@ -164,6 +164,7 @@ def dev():
     folder = request.args.get('folder', '', type=str)
     flash = request.args.get('flash', False, type=bool)
     zipfiles = request.args.get('zip', False, type=bool)
+    buildHex = request.args.get('build', False, type=bool)
     newfile = request.args.get('newfile', '', type=str)
     deletefile = request.args.get('deletefile', '', type=str)
     editfile = request.args.get('editfile', '', type=str)
@@ -251,62 +252,115 @@ def dev():
             from subprocess import Popen, PIPE
             print teensy + 'scripts/main.py'
             print projetos + '/' + projetoStr + '/main.py'
-            shutil.copyfile(projetos + '/' + projetoStr + '/main.py', teensy + '/scripts/main.py')
-            shutil.copyfile(projetos + '/' + projetoStr + '/boot.py', teensy + '/scripts/boot.py')
-            cmd = 'make --directory ' + teensy + ' BOARD=TEENSY_3.6'
-            print cmd
-            proc = Popen(cmd, shell=True, bufsize=1, stdout=PIPE)
+            folder = teensy + '/scripts/'
+            for the_file in os.listdir(folder):
+                file_path = os.path.join(folder, the_file)
+                try:
+                    if os.path.isfile(file_path):
+                        os.unlink(file_path)
+                        # elif os.path.isdir(file_path): shutil.rmtree(file_path)
+                except Exception as e:
+                    print(e)
+            src_files = os.listdir(projetos + '/' + projetoStr)
+            for file_name in src_files:
+                full_file_name = os.path.join(projetos + '/' + projetoStr, file_name)
+                if (os.path.isfile(full_file_name)):
+                    shutil.copy(full_file_name, teensy + '/scripts')
 
-            # ./teensy_loader_cli --mcu=mk66fx1m0 -w micropython.hex
-            cmd2 =loader + ' --mcu=' + board + ' -w ' + teensy + '/build-TEENSY_3.6/micropython.hex'
-            print cmd2
-            os.popen(cmd2, 'w')
-            contador = contador + 1
-            if contador == 1:
-                aviso = boardok
-            elif contador == 2:
-                aviso = flashok
-                contador = 0
+            if buildHex:
+                try:
+                    os.popen('make --directory ' + teensy + ' BOARD=TEENSY_3.6 clean', 'w')
+                    cmd = 'make --directory ' + teensy + ' BOARD=TEENSY_3.6'
+                    print cmd
+                    os.popen(cmd, 'w')
+                    aviso = "Build finish"
+                except:
+                    erro = 'Build failed'
+            else:
+                try:
+                    cmd2 = loader + ' --mcu=' + board + ' -w ' + teensy + '/build-TEENSY_3.6/micropython.hex'
+                    print cmd2
+                    os.popen(cmd2, 'w')
+                    contador = contador + 1
+                    if contador == 1:
+                        aviso = boardok
+                    elif contador == 2:
+                        aviso = flashok
+                except:
+                    erro = 'Flash failed'
         elif board == 'mk64fx512':
             from subprocess import Popen, PIPE
             print teensy + 'scripts/main.py'
             print projetos + '/' + projetoStr + '/main.py'
-            shutil.copyfile(projetos + '/' + projetoStr + '/main.py', teensy + '/scripts/main.py')
-            shutil.copyfile(projetos + '/' + projetoStr + '/boot.py', teensy + '/scripts/boot.py')
-            cmd = 'make --directory ' + teensy + ' BOARD=TEENSY_3.5'
-            print cmd
-            proc = Popen(cmd, shell=True, bufsize=1, stdout=PIPE)
-
-            # ./teensy_loader_cli --mcu=mk64fx512 -w micropython.hex
-            cmd2 =loader + ' --mcu=' + board + ' -w ' + teensy + '/build-TEENSY_3.5/micropython.hex'
-            print cmd2
-            os.popen(cmd2, 'w')
+            folder = teensy + '/scripts/'
+            for the_file in os.listdir(folder):
+                file_path = os.path.join(folder, the_file)
+                try:
+                    if os.path.isfile(file_path):
+                        os.unlink(file_path)
+                        # elif os.path.isdir(file_path): shutil.rmtree(file_path)
+                except Exception as e:
+                    print(e)
+            src_files = os.listdir(projetos + '/' + projetoStr)
+            for file_name in src_files:
+                full_file_name = os.path.join(projetos + '/' + projetoStr, file_name)
+                if (os.path.isfile(full_file_name)):
+                    shutil.copy(full_file_name, teensy + '/scripts')
             contador = contador + 1
             if contador == 1:
-                aviso = boardok
+                os.popen('make --directory ' + teensy + ' BOARD=TEENSY_3.5 clean', 'w')
+                cmd = 'make --directory ' + teensy + ' BOARD=TEENSY_3.5'
+                print cmd
+                os.popen(cmd, 'w')
+                aviso = "Build finish"
             elif contador == 2:
+                cmd2 = loader + ' --mcu=' + board + ' -w ' + teensy + '/build-TEENSY_3.5/micropython.hex'
+                print cmd2
+                os.popen(cmd2, 'w')
+                aviso = boardok
+            elif contador == 3:
+                cmd2 = loader + ' --mcu=' + board + ' -w ' + teensy + '/build-TEENSY_3.5/micropython.hex'
+                print cmd2
+                os.popen(cmd2, 'w')
                 aviso = flashok
                 contador = 0
         elif board == 'mk20dx256':
             from subprocess import Popen, PIPE
             print teensy + 'scripts/main.py'
             print projetos + '/' + projetoStr + '/main.py'
-            shutil.copyfile(projetos + '/' + projetoStr + '/main.py', teensy + '/scripts/main.py')
-            shutil.copyfile(projetos + '/' + projetoStr + '/boot.py', teensy + '/scripts/boot.py')
-            cmd = 'make --directory ' + teensy + ' BOARD=TEENSY_3.1'
-            print cmd
-            proc = Popen(cmd, shell=True, bufsize=1, stdout=PIPE)
-
-            # ./teensy_loader_cli --mcu=mk20dx256 -w micropython.hex
-            cmd2 = loader + ' --mcu=' + board + ' -w ' + teensy + '/build-TEENSY_3.1/micropython.hex'
-            print cmd2
-            os.popen(cmd2, 'w')
+            folder = teensy + '/scripts/'
+            for the_file in os.listdir(folder):
+                file_path = os.path.join(folder, the_file)
+                try:
+                    if os.path.isfile(file_path):
+                        os.unlink(file_path)
+                        # elif os.path.isdir(file_path): shutil.rmtree(file_path)
+                except Exception as e:
+                    print(e)
+            src_files = os.listdir(projetos + '/' + projetoStr)
+            for file_name in src_files:
+                full_file_name = os.path.join(projetos + '/' + projetoStr, file_name)
+                if (os.path.isfile(full_file_name)):
+                    shutil.copy(full_file_name, teensy + '/scripts')
             contador = contador + 1
             if contador == 1:
-                aviso = boardok
+                os.popen('make --directory ' + teensy + ' BOARD=TEENSY_3.1 clean', 'w')
+                cmd = 'make --directory ' + teensy + ' BOARD=TEENSY_3.1'
+                print cmd
+                os.popen(cmd, 'w')
+                aviso = "Build finish"
             elif contador == 2:
+                cmd2 = loader + ' --mcu=' + board + ' -w ' + teensy + '/build-TEENSY_3.1/micropython.hex'
+                print cmd2
+                os.popen(cmd2, 'w')
+                aviso = boardok
+            elif contador == 3:
+                cmd2 = loader + ' --mcu=' + board + ' -w ' + teensy + '/build-TEENSY_3.1/micropython.hex'
+                print cmd2
+                os.popen(cmd2, 'w')
                 aviso = flashok
                 contador = 0
+
     if zipfiles:
         zipfiles = False
         zipf = zipfile.ZipFile(zip + '/' + projetoStr+'.zip', 'w', zipfile.ZIP_DEFLATED)

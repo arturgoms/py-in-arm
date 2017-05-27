@@ -227,7 +227,7 @@ endif # USE_FROZEN
 ifeq ($(USE_TEENSY_LOADER_CLI),1)
 post_compile: $(BUILD)/micropython.hex
 	$(ECHO) "Preparing $@ for upload"
-	$/Volumes/Armazenamento/Projetos/micropython/teensy/build-TEENSY_3.6/teensy_loader_cli -v -mmcu=$(MCU) -w -s $<
+	$(Q)teensy_loader_cli -v -mmcu=$(MCU) -w -s $<
 
 reboot:
 else

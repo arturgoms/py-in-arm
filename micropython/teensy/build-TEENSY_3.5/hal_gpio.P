@@ -1,0 +1,20 @@
+build-TEENSY_3.5/hal_gpio.o: hal_gpio.c \
+ /usr/local/Cellar/gcc-arm-none-eabi-49/20150925/lib/gcc/arm-none-eabi/4.9.3/include/stdint.h \
+ /usr/local/Cellar/gcc-arm-none-eabi-49/20150925/arm-none-eabi/include/stdint.h \
+ /usr/local/Cellar/gcc-arm-none-eabi-49/20150925/arm-none-eabi/include/machine/_default_types.h \
+ /usr/local/Cellar/gcc-arm-none-eabi-49/20150925/arm-none-eabi/include/sys/features.h \
+ /usr/local/Cellar/gcc-arm-none-eabi-49/20150925/arm-none-eabi/include/sys/_intsup.h \
+ /usr/local/Cellar/gcc-arm-none-eabi-49/20150925/arm-none-eabi/include/sys/_stdint.h \
+ core/mk20dx128.h core/kinetis.h teensy_hal.h \
+ /usr/local/Cellar/gcc-arm-none-eabi-49/20150925/lib/gcc/arm-none-eabi/4.9.3/include/stdbool.h \
+ hal_ftm.h stm32hal.h core/kinetis.h
+hal_gpio.c :
+ /usr/local/Cellar/gcc-arm-none-eabi-49/20150925/lib/gcc/arm-none-eabi/4.9.3/include/stdint.h :
+ /usr/local/Cellar/gcc-arm-none-eabi-49/20150925/arm-none-eabi/include/stdint.h :
+ /usr/local/Cellar/gcc-arm-none-eabi-49/20150925/arm-none-eabi/include/machine/_default_types.h :
+ /usr/local/Cellar/gcc-arm-none-eabi-49/20150925/arm-none-eabi/include/sys/features.h :
+ /usr/local/Cellar/gcc-arm-none-eabi-49/20150925/arm-none-eabi/include/sys/_intsup.h :
+ /usr/local/Cellar/gcc-arm-none-eabi-49/20150925/arm-none-eabi/include/sys/_stdint.h :
+ core/mk20dx128.h core/kinetis.h teensy_hal.h :
+ /usr/local/Cellar/gcc-arm-none-eabi-49/20150925/lib/gcc/arm-none-eabi/4.9.3/include/stdbool.h :
+ hal_ftm.h stm32hal.h core/kinetis.h :

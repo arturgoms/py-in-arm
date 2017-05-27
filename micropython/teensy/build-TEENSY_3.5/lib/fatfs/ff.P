@@ -1,0 +1,50 @@
+build-TEENSY_3.5/lib/fatfs/ff.o: ../lib/fatfs/ff.c \
+ /usr/local/Cellar/gcc-arm-none-eabi-49/20150925/arm-none-eabi/include/string.h \
+ /usr/local/Cellar/gcc-arm-none-eabi-49/20150925/arm-none-eabi/include/_ansi.h \
+ /usr/local/Cellar/gcc-arm-none-eabi-49/20150925/arm-none-eabi/include/newlib.h \
+ /usr/local/Cellar/gcc-arm-none-eabi-49/20150925/arm-none-eabi/include/sys/config.h \
+ /usr/local/Cellar/gcc-arm-none-eabi-49/20150925/arm-none-eabi/include/machine/ieeefp.h \
+ /usr/local/Cellar/gcc-arm-none-eabi-49/20150925/arm-none-eabi/include/sys/features.h \
+ /usr/local/Cellar/gcc-arm-none-eabi-49/20150925/arm-none-eabi/include/sys/reent.h \
+ /usr/local/Cellar/gcc-arm-none-eabi-49/20150925/arm-none-eabi/include/_ansi.h \
+ /usr/local/Cellar/gcc-arm-none-eabi-49/20150925/lib/gcc/arm-none-eabi/4.9.3/include/stddef.h \
+ /usr/local/Cellar/gcc-arm-none-eabi-49/20150925/arm-none-eabi/include/sys/_types.h \
+ /usr/local/Cellar/gcc-arm-none-eabi-49/20150925/arm-none-eabi/include/machine/_types.h \
+ /usr/local/Cellar/gcc-arm-none-eabi-49/20150925/arm-none-eabi/include/machine/_default_types.h \
+ /usr/local/Cellar/gcc-arm-none-eabi-49/20150925/arm-none-eabi/include/sys/lock.h \
+ /usr/local/Cellar/gcc-arm-none-eabi-49/20150925/arm-none-eabi/include/sys/cdefs.h \
+ /usr/local/Cellar/gcc-arm-none-eabi-49/20150925/arm-none-eabi/include/sys/string.h \
+ ../lib/fatfs/ff.h ../lib/fatfs/integer.h ../lib/fatfs/ffconf.h \
+ ../py/mpconfig.h mpconfigport.h \
+ /usr/local/Cellar/gcc-arm-none-eabi-49/20150925/lib/gcc/arm-none-eabi/4.9.3/include/stdint.h \
+ /usr/local/Cellar/gcc-arm-none-eabi-49/20150925/arm-none-eabi/include/stdint.h \
+ /usr/local/Cellar/gcc-arm-none-eabi-49/20150925/arm-none-eabi/include/sys/_intsup.h \
+ /usr/local/Cellar/gcc-arm-none-eabi-49/20150925/arm-none-eabi/include/sys/_stdint.h \
+ boards/TEENSY_3.5/mpconfigboard.h \
+ /usr/local/Cellar/gcc-arm-none-eabi-49/20150925/arm-none-eabi/include/alloca.h \
+ ../lib/fatfs/diskio.h
+../lib/fatfs/ff.c :
+ /usr/local/Cellar/gcc-arm-none-eabi-49/20150925/arm-none-eabi/include/string.h :
+ /usr/local/Cellar/gcc-arm-none-eabi-49/20150925/arm-none-eabi/include/_ansi.h :
+ /usr/local/Cellar/gcc-arm-none-eabi-49/20150925/arm-none-eabi/include/newlib.h :
+ /usr/local/Cellar/gcc-arm-none-eabi-49/20150925/arm-none-eabi/include/sys/config.h :
+ /usr/local/Cellar/gcc-arm-none-eabi-49/20150925/arm-none-eabi/include/machine/ieeefp.h :
+ /usr/local/Cellar/gcc-arm-none-eabi-49/20150925/arm-none-eabi/include/sys/features.h :
+ /usr/local/Cellar/gcc-arm-none-eabi-49/20150925/arm-none-eabi/include/sys/reent.h :
+ /usr/local/Cellar/gcc-arm-none-eabi-49/20150925/arm-none-eabi/include/_ansi.h :
+ /usr/local/Cellar/gcc-arm-none-eabi-49/20150925/lib/gcc/arm-none-eabi/4.9.3/include/stddef.h :
+ /usr/local/Cellar/gcc-arm-none-eabi-49/20150925/arm-none-eabi/include/sys/_types.h :
+ /usr/local/Cellar/gcc-arm-none-eabi-49/20150925/arm-none-eabi/include/machine/_types.h :
+ /usr/local/Cellar/gcc-arm-none-eabi-49/20150925/arm-none-eabi/include/machine/_default_types.h :
+ /usr/local/Cellar/gcc-arm-none-eabi-49/20150925/arm-none-eabi/include/sys/lock.h :
+ /usr/local/Cellar/gcc-arm-none-eabi-49/20150925/arm-none-eabi/include/sys/cdefs.h :
+ /usr/local/Cellar/gcc-arm-none-eabi-49/20150925/arm-none-eabi/include/sys/string.h :
+ ../lib/fatfs/ff.h ../lib/fatfs/integer.h ../lib/fatfs/ffconf.h :
+ ../py/mpconfig.h mpconfigport.h :
+ /usr/local/Cellar/gcc-arm-none-eabi-49/20150925/lib/gcc/arm-none-eabi/4.9.3/include/stdint.h :
+ /usr/local/Cellar/gcc-arm-none-eabi-49/20150925/arm-none-eabi/include/stdint.h :
+ /usr/local/Cellar/gcc-arm-none-eabi-49/20150925/arm-none-eabi/include/sys/_intsup.h :
+ /usr/local/Cellar/gcc-arm-none-eabi-49/20150925/arm-none-eabi/include/sys/_stdint.h :
+ boards/TEENSY_3.5/mpconfigboard.h :
+ /usr/local/Cellar/gcc-arm-none-eabi-49/20150925/arm-none-eabi/include/alloca.h :
+ ../lib/fatfs/diskio.h :

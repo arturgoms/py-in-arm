@@ -1,0 +1,48 @@
+build-TEENSY_3.5/core/usb_serial.o: core/usb_serial.c core/usb_dev.h \
+ core/usb_desc.h \
+ /usr/local/Cellar/gcc-arm-none-eabi-49/20150925/lib/gcc/arm-none-eabi/4.9.3/include/stdint.h \
+ /usr/local/Cellar/gcc-arm-none-eabi-49/20150925/arm-none-eabi/include/stdint.h \
+ /usr/local/Cellar/gcc-arm-none-eabi-49/20150925/arm-none-eabi/include/machine/_default_types.h \
+ /usr/local/Cellar/gcc-arm-none-eabi-49/20150925/arm-none-eabi/include/sys/features.h \
+ /usr/local/Cellar/gcc-arm-none-eabi-49/20150925/arm-none-eabi/include/sys/_intsup.h \
+ /usr/local/Cellar/gcc-arm-none-eabi-49/20150925/arm-none-eabi/include/sys/_stdint.h \
+ /usr/local/Cellar/gcc-arm-none-eabi-49/20150925/lib/gcc/arm-none-eabi/4.9.3/include/stddef.h \
+ core/usb_mem.h core/usb_serial.h \
+ /usr/local/Cellar/gcc-arm-none-eabi-49/20150925/arm-none-eabi/include/inttypes.h \
+ /usr/local/Cellar/gcc-arm-none-eabi-49/20150925/arm-none-eabi/include/newlib.h \
+ /usr/local/Cellar/gcc-arm-none-eabi-49/20150925/arm-none-eabi/include/sys/config.h \
+ /usr/local/Cellar/gcc-arm-none-eabi-49/20150925/arm-none-eabi/include/machine/ieeefp.h \
+ core/core_pins.h core/kinetis.h core/pins_arduino.h \
+ /usr/local/Cellar/gcc-arm-none-eabi-49/20150925/arm-none-eabi/include/string.h \
+ /usr/local/Cellar/gcc-arm-none-eabi-49/20150925/arm-none-eabi/include/_ansi.h \
+ /usr/local/Cellar/gcc-arm-none-eabi-49/20150925/arm-none-eabi/include/sys/reent.h \
+ /usr/local/Cellar/gcc-arm-none-eabi-49/20150925/arm-none-eabi/include/_ansi.h \
+ /usr/local/Cellar/gcc-arm-none-eabi-49/20150925/arm-none-eabi/include/sys/_types.h \
+ /usr/local/Cellar/gcc-arm-none-eabi-49/20150925/arm-none-eabi/include/machine/_types.h \
+ /usr/local/Cellar/gcc-arm-none-eabi-49/20150925/arm-none-eabi/include/sys/lock.h \
+ /usr/local/Cellar/gcc-arm-none-eabi-49/20150925/arm-none-eabi/include/sys/cdefs.h \
+ /usr/local/Cellar/gcc-arm-none-eabi-49/20150925/arm-none-eabi/include/sys/string.h
+core/usb_serial.c core/usb_dev.h :
+ core/usb_desc.h :
+ /usr/local/Cellar/gcc-arm-none-eabi-49/20150925/lib/gcc/arm-none-eabi/4.9.3/include/stdint.h :
+ /usr/local/Cellar/gcc-arm-none-eabi-49/20150925/arm-none-eabi/include/stdint.h :
+ /usr/local/Cellar/gcc-arm-none-eabi-49/20150925/arm-none-eabi/include/machine/_default_types.h :
+ /usr/local/Cellar/gcc-arm-none-eabi-49/20150925/arm-none-eabi/include/sys/features.h :
+ /usr/local/Cellar/gcc-arm-none-eabi-49/20150925/arm-none-eabi/include/sys/_intsup.h :
+ /usr/local/Cellar/gcc-arm-none-eabi-49/20150925/arm-none-eabi/include/sys/_stdint.h :
+ /usr/local/Cellar/gcc-arm-none-eabi-49/20150925/lib/gcc/arm-none-eabi/4.9.3/include/stddef.h :
+ core/usb_mem.h core/usb_serial.h :
+ /usr/local/Cellar/gcc-arm-none-eabi-49/20150925/arm-none-eabi/include/inttypes.h :
+ /usr/local/Cellar/gcc-arm-none-eabi-49/20150925/arm-none-eabi/include/newlib.h :
+ /usr/local/Cellar/gcc-arm-none-eabi-49/20150925/arm-none-eabi/include/sys/config.h :
+ /usr/local/Cellar/gcc-arm-none-eabi-49/20150925/arm-none-eabi/include/machine/ieeefp.h :
+ core/core_pins.h core/kinetis.h core/pins_arduino.h :
+ /usr/local/Cellar/gcc-arm-none-eabi-49/20150925/arm-none-eabi/include/string.h :
+ /usr/local/Cellar/gcc-arm-none-eabi-49/20150925/arm-none-eabi/include/_ansi.h :
+ /usr/local/Cellar/gcc-arm-none-eabi-49/20150925/arm-none-eabi/include/sys/reent.h :
+ /usr/local/Cellar/gcc-arm-none-eabi-49/20150925/arm-none-eabi/include/_ansi.h :
+ /usr/local/Cellar/gcc-arm-none-eabi-49/20150925/arm-none-eabi/include/sys/_types.h :
+ /usr/local/Cellar/gcc-arm-none-eabi-49/20150925/arm-none-eabi/include/machine/_types.h :
+ /usr/local/Cellar/gcc-arm-none-eabi-49/20150925/arm-none-eabi/include/sys/lock.h :
+ /usr/local/Cellar/gcc-arm-none-eabi-49/20150925/arm-none-eabi/include/sys/cdefs.h :
+ /usr/local/Cellar/gcc-arm-none-eabi-49/20150925/arm-none-eabi/include/sys/string.h :

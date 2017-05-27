@@ -1,0 +1,20 @@
+build-TEENSY_3.5/core/usb_mem.o: core/usb_mem.c core/usb_dev.h \
+ core/usb_desc.h \
+ /usr/local/Cellar/gcc-arm-none-eabi-49/20150925/lib/gcc/arm-none-eabi/4.9.3/include/stdint.h \
+ /usr/local/Cellar/gcc-arm-none-eabi-49/20150925/arm-none-eabi/include/stdint.h \
+ /usr/local/Cellar/gcc-arm-none-eabi-49/20150925/arm-none-eabi/include/machine/_default_types.h \
+ /usr/local/Cellar/gcc-arm-none-eabi-49/20150925/arm-none-eabi/include/sys/features.h \
+ /usr/local/Cellar/gcc-arm-none-eabi-49/20150925/arm-none-eabi/include/sys/_intsup.h \
+ /usr/local/Cellar/gcc-arm-none-eabi-49/20150925/arm-none-eabi/include/sys/_stdint.h \
+ /usr/local/Cellar/gcc-arm-none-eabi-49/20150925/lib/gcc/arm-none-eabi/4.9.3/include/stddef.h \
+ core/usb_mem.h core/kinetis.h
+core/usb_mem.c core/usb_dev.h :
+ core/usb_desc.h :
+ /usr/local/Cellar/gcc-arm-none-eabi-49/20150925/lib/gcc/arm-none-eabi/4.9.3/include/stdint.h :
+ /usr/local/Cellar/gcc-arm-none-eabi-49/20150925/arm-none-eabi/include/stdint.h :
+ /usr/local/Cellar/gcc-arm-none-eabi-49/20150925/arm-none-eabi/include/machine/_default_types.h :
+ /usr/local/Cellar/gcc-arm-none-eabi-49/20150925/arm-none-eabi/include/sys/features.h :
+ /usr/local/Cellar/gcc-arm-none-eabi-49/20150925/arm-none-eabi/include/sys/_intsup.h :
+ /usr/local/Cellar/gcc-arm-none-eabi-49/20150925/arm-none-eabi/include/sys/_stdint.h :
+ /usr/local/Cellar/gcc-arm-none-eabi-49/20150925/lib/gcc/arm-none-eabi/4.9.3/include/stddef.h :
+ core/usb_mem.h core/kinetis.h :

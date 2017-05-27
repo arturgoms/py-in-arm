@@ -41,6 +41,15 @@
             // something went wrong
           }
         }
+        function build() {
+                //var client = new XMLHttpRequest();
+                //client.onload = handler;
+                //client.open("GET", "/flash?projeto={{ projeto }}&file={{ file }}", false);
+                //client.send();
+                //document.getElementById("demo").innerHTML = client.responseText;
+             window.location = "/dev?projeto={{ projeto }}&file={{ file }}&flash=True&build=True";
+
+        }
         function flash() {
                 //var client = new XMLHttpRequest();
                 //client.onload = handler;
@@ -78,7 +87,6 @@
                 window.location = "/dev?projeto={{ projeto }}&file={{ file }}&zip=True";
 
         }
-
         function voltar() {
               var projetoSplit = "{{ projeto }}".split('/');
               var text = "";
@@ -119,7 +127,7 @@
                             <input class="ui teal button" type="submit" value="Save">
                       </form>
                       <div style="margin-left: 80px;margin-top: -35px" >
-                            <button onclick="flash()" class="ui teal button">Find</button> <button onclick="flash()" class="ui teal button">Flash</button><button onclick="zip()" class="ui teal button">Download</button>
+                            <button onclick="build()" class="ui teal button">Build</button><button onclick="flash()" class="ui teal button">Find</button> <button onclick="flash()" class="ui teal button">Flash</button><button onclick="zip()" class="ui teal button">Download</button>
                       </div>
                   </div>
             </div>

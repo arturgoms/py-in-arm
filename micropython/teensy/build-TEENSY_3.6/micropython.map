@@ -1320,7 +1320,7 @@ RAM              0x000000001fff0000 0x0000000000040000 xrw
 
 Linker script and memory map
 
-                0x000000005923236b                __rtc_localtime = 0x5923236b
+                0x0000000059272302                __rtc_localtime = 0x59272302
 LOAD build-TEENSY_3.6/py/mpstate.o
 LOAD build-TEENSY_3.6/py/nlrx86.o
 LOAD build-TEENSY_3.6/py/nlrx64.o
@@ -1514,7 +1514,7 @@ LOAD /usr/local/Cellar/gcc-arm-none-eabi-49/20150925/bin/../lib/gcc/arm-none-eab
                 0x0000000000000800                _minimum_stack_size = 0x800
                 0x0000000000004000                _minimum_heap_size = 0x4000
 
-.text           0x0000000000000000    0x3d79c
+.text           0x0000000000000000    0x3d774
                 0x0000000000000000                . = 0x0
  *(.vectors)
  .vectors       0x0000000000000000      0x1d0 build-TEENSY_3.6/core/mk20dx128.o
@@ -8325,555 +8325,555 @@ LOAD /usr/local/Cellar/gcc-arm-none-eabi-49/20150925/bin/../lib/gcc/arm-none-eab
                 0x000000000003b790        0x8 build-TEENSY_3.6/stmhal/moduos.o
                 0x000000000003b790                mod_os_sync_obj
  .rodata.str1.1
-                0x000000000003b798      0x10c build-TEENSY_3.6/stmhal/moduos.o
-                                        0x10f (size before relaxing)
+                0x000000000003b798       0xf8 build-TEENSY_3.6/stmhal/moduos.o
+                                         0xfb (size before relaxing)
  .rodata.os_remove_obj
-                0x000000000003b8a4        0x8 build-TEENSY_3.6/stmhal/moduos.o
+                0x000000000003b890        0x8 build-TEENSY_3.6/stmhal/moduos.o
  .rodata.os_uname_obj
-                0x000000000003b8ac        0x8 build-TEENSY_3.6/stmhal/moduos.o
+                0x000000000003b898        0x8 build-TEENSY_3.6/stmhal/moduos.o
  .rodata.os_urandom_obj
-                0x000000000003b8b4        0x8 build-TEENSY_3.6/stmhal/moduos.o
+                0x000000000003b8a0        0x8 build-TEENSY_3.6/stmhal/moduos.o
  .rodata.mod_os_dupterm_obj
-                0x000000000003b8bc        0xc build-TEENSY_3.6/stmhal/moduos.o
-                0x000000000003b8bc                mod_os_dupterm_obj
+                0x000000000003b8a8        0xc build-TEENSY_3.6/stmhal/moduos.o
+                0x000000000003b8a8                mod_os_dupterm_obj
  .rodata.os_uname_info_fields
-                0x000000000003b8c8       0x14 build-TEENSY_3.6/stmhal/moduos.o
+                0x000000000003b8b4       0x14 build-TEENSY_3.6/stmhal/moduos.o
  .rodata.os_module_globals_table
-                0x000000000003b8dc       0x98 build-TEENSY_3.6/stmhal/moduos.o
+                0x000000000003b8c8       0x98 build-TEENSY_3.6/stmhal/moduos.o
  .rodata.os_listdir_obj
-                0x000000000003b974        0xc build-TEENSY_3.6/stmhal/moduos.o
+                0x000000000003b960        0xc build-TEENSY_3.6/stmhal/moduos.o
  .rodata.os_module_globals
-                0x000000000003b980       0x10 build-TEENSY_3.6/stmhal/moduos.o
+                0x000000000003b96c       0x10 build-TEENSY_3.6/stmhal/moduos.o
  .rodata.os_rename_obj
-                0x000000000003b990        0x8 build-TEENSY_3.6/stmhal/moduos.o
+                0x000000000003b97c        0x8 build-TEENSY_3.6/stmhal/moduos.o
  .rodata.mp_module_uos
-                0x000000000003b998        0x8 build-TEENSY_3.6/stmhal/moduos.o
-                0x000000000003b998                mp_module_uos
+                0x000000000003b984        0x8 build-TEENSY_3.6/stmhal/moduos.o
+                0x000000000003b984                mp_module_uos
  .rodata.os_uname_info_sysname_obj
-                0x000000000003b9a0       0x10 build-TEENSY_3.6/stmhal/moduos.o
+                0x000000000003b98c       0x10 build-TEENSY_3.6/stmhal/moduos.o
  .rodata.os_getcwd_obj
-                0x000000000003b9b0        0x8 build-TEENSY_3.6/stmhal/moduos.o
+                0x000000000003b99c        0x8 build-TEENSY_3.6/stmhal/moduos.o
  .rodata.digital_pin_to_info_PGM
-                0x000000000003b9b8      0x200 build-TEENSY_3.6/core/pins_teensy.o
-                0x000000000003b9b8                digital_pin_to_info_PGM
+                0x000000000003b9a4      0x200 build-TEENSY_3.6/core/pins_teensy.o
+                0x000000000003b9a4                digital_pin_to_info_PGM
  .rodata.usb_endpoint_config_table
-                0x000000000003bbb8        0x4 build-TEENSY_3.6/core/usb_desc.o
-                0x000000000003bbb8                usb_endpoint_config_table
+                0x000000000003bba4        0x4 build-TEENSY_3.6/core/usb_desc.o
+                0x000000000003bba4                usb_endpoint_config_table
  .rodata.usb_descriptor_list
-                0x000000000003bbbc       0x54 build-TEENSY_3.6/core/usb_desc.o
-                0x000000000003bbbc                usb_descriptor_list
+                0x000000000003bba8       0x54 build-TEENSY_3.6/core/usb_desc.o
+                0x000000000003bba8                usb_descriptor_list
  .rodata.str1.1
-                0x000000000003bc10        0xe build-TEENSY_3.6/lib/mp-readline/readline.o
+                0x000000000003bbfc        0xe build-TEENSY_3.6/lib/mp-readline/readline.o
                                          0x16 (size before relaxing)
  .rodata.days_since_jan1
-                0x000000000003bc1e       0x1a build-TEENSY_3.6/lib/timeutils/timeutils.o
+                0x000000000003bc0a       0x1a build-TEENSY_3.6/lib/timeutils/timeutils.o
  .rodata.str1.1
-                0x000000000003bc38      0x134 build-TEENSY_3.6/lib/utils/pyexec.o
-                                        0x196 (size before relaxing)
+                0x000000000003bc24      0x120 build-TEENSY_3.6/lib/utils/pyexec.o
+                                        0x182 (size before relaxing)
  .rodata.pyb_set_repl_info_obj
-                0x000000000003bd6c        0x8 build-TEENSY_3.6/lib/utils/pyexec.o
-                0x000000000003bd6c                pyb_set_repl_info_obj
+                0x000000000003bd44        0x8 build-TEENSY_3.6/lib/utils/pyexec.o
+                0x000000000003bd44                pyb_set_repl_info_obj
  .rodata.str1.1
-                0x000000000003bd74       0x1d build-TEENSY_3.6/lib/utils/pyhelp.o
+                0x000000000003bd4c       0x1d build-TEENSY_3.6/lib/utils/pyhelp.o
                                          0x22 (size before relaxing)
- *fill*         0x000000000003bd91        0x1 ff
+ *fill*         0x000000000003bd69        0x1 ff
  .rodata.cst.5276
-                0x000000000003bd92       0x16 build-TEENSY_3.6/lib/fatfs/ff.o
+                0x000000000003bd6a       0x16 build-TEENSY_3.6/lib/fatfs/ff.o
  .rodata.str1.1
-                0x000000000003bda8       0x54 build-TEENSY_3.6/lib/fatfs/ff.o
+                0x000000000003bd80       0x54 build-TEENSY_3.6/lib/fatfs/ff.o
  .rodata.vst.5275
-                0x000000000003bdfc       0x16 build-TEENSY_3.6/lib/fatfs/ff.o
- .rodata.ExCvt  0x000000000003be12       0x80 build-TEENSY_3.6/lib/fatfs/ff.o
+                0x000000000003bdd4       0x16 build-TEENSY_3.6/lib/fatfs/ff.o
+ .rodata.ExCvt  0x000000000003bdea       0x80 build-TEENSY_3.6/lib/fatfs/ff.o
  .rodata.LfnOfs
-                0x000000000003be92        0xd build-TEENSY_3.6/lib/fatfs/ff.o
- *fill*         0x000000000003be9f        0x1 ff
- .rodata.Tbl    0x000000000003bea0      0x100 build-TEENSY_3.6/lib/fatfs/option/ccsbcs.o
+                0x000000000003be6a        0xd build-TEENSY_3.6/lib/fatfs/ff.o
+ *fill*         0x000000000003be77        0x1 ff
+ .rodata.Tbl    0x000000000003be78      0x100 build-TEENSY_3.6/lib/fatfs/option/ccsbcs.o
  .rodata.tbl_upper.4523
-                0x000000000003bfa0       0x16 build-TEENSY_3.6/lib/fatfs/option/ccsbcs.o
+                0x000000000003bf78       0x16 build-TEENSY_3.6/lib/fatfs/option/ccsbcs.o
  .rodata.tbl_lower.4522
-                0x000000000003bfb6       0x18 build-TEENSY_3.6/lib/fatfs/option/ccsbcs.o
- *fill*         0x000000000003bfce        0x2 ff
+                0x000000000003bf8e       0x18 build-TEENSY_3.6/lib/fatfs/option/ccsbcs.o
+ *fill*         0x000000000003bfa6        0x2 ff
  .rodata.pin_C0
-                0x000000000003bfd0       0x18 build-TEENSY_3.6/pins_TEENSY_3.6.o
-                0x000000000003bfd0                pin_C0
+                0x000000000003bfa8       0x18 build-TEENSY_3.6/pins_TEENSY_3.6.o
+                0x000000000003bfa8                pin_C0
  .rodata.pin_C1
-                0x000000000003bfe8       0x18 build-TEENSY_3.6/pins_TEENSY_3.6.o
-                0x000000000003bfe8                pin_C1
+                0x000000000003bfc0       0x18 build-TEENSY_3.6/pins_TEENSY_3.6.o
+                0x000000000003bfc0                pin_C1
  .rodata.pin_C2
-                0x000000000003c000       0x18 build-TEENSY_3.6/pins_TEENSY_3.6.o
-                0x000000000003c000                pin_C2
+                0x000000000003bfd8       0x18 build-TEENSY_3.6/pins_TEENSY_3.6.o
+                0x000000000003bfd8                pin_C2
  .rodata.pin_C3
-                0x000000000003c018       0x18 build-TEENSY_3.6/pins_TEENSY_3.6.o
-                0x000000000003c018                pin_C3
+                0x000000000003bff0       0x18 build-TEENSY_3.6/pins_TEENSY_3.6.o
+                0x000000000003bff0                pin_C3
  .rodata.pin_C4
-                0x000000000003c030       0x18 build-TEENSY_3.6/pins_TEENSY_3.6.o
-                0x000000000003c030                pin_C4
+                0x000000000003c008       0x18 build-TEENSY_3.6/pins_TEENSY_3.6.o
+                0x000000000003c008                pin_C4
  .rodata.pin_C5
-                0x000000000003c048       0x18 build-TEENSY_3.6/pins_TEENSY_3.6.o
-                0x000000000003c048                pin_C5
+                0x000000000003c020       0x18 build-TEENSY_3.6/pins_TEENSY_3.6.o
+                0x000000000003c020                pin_C5
  .rodata.pin_C6
-                0x000000000003c060       0x18 build-TEENSY_3.6/pins_TEENSY_3.6.o
-                0x000000000003c060                pin_C6
+                0x000000000003c038       0x18 build-TEENSY_3.6/pins_TEENSY_3.6.o
+                0x000000000003c038                pin_C6
  .rodata.pin_C2_af
-                0x000000000003c078       0x20 build-TEENSY_3.6/pins_TEENSY_3.6.o
-                0x000000000003c078                pin_C2_af
+                0x000000000003c050       0x20 build-TEENSY_3.6/pins_TEENSY_3.6.o
+                0x000000000003c050                pin_C2_af
  .rodata.pin_C8
-                0x000000000003c098       0x18 build-TEENSY_3.6/pins_TEENSY_3.6.o
-                0x000000000003c098                pin_C8
+                0x000000000003c070       0x18 build-TEENSY_3.6/pins_TEENSY_3.6.o
+                0x000000000003c070                pin_C8
  .rodata.pin_C9
-                0x000000000003c0b0       0x18 build-TEENSY_3.6/pins_TEENSY_3.6.o
-                0x000000000003c0b0                pin_C9
+                0x000000000003c088       0x18 build-TEENSY_3.6/pins_TEENSY_3.6.o
+                0x000000000003c088                pin_C9
  .rodata.pin_Z12
-                0x000000000003c0c8       0x18 build-TEENSY_3.6/pins_TEENSY_3.6.o
-                0x000000000003c0c8                pin_Z12
+                0x000000000003c0a0       0x18 build-TEENSY_3.6/pins_TEENSY_3.6.o
+                0x000000000003c0a0                pin_Z12
  .rodata.pin_Z13
-                0x000000000003c0e0       0x18 build-TEENSY_3.6/pins_TEENSY_3.6.o
-                0x000000000003c0e0                pin_Z13
+                0x000000000003c0b8       0x18 build-TEENSY_3.6/pins_TEENSY_3.6.o
+                0x000000000003c0b8                pin_Z13
  .rodata.pin_E1_af
-                0x000000000003c0f8       0x30 build-TEENSY_3.6/pins_TEENSY_3.6.o
-                0x000000000003c0f8                pin_E1_af
+                0x000000000003c0d0       0x30 build-TEENSY_3.6/pins_TEENSY_3.6.o
+                0x000000000003c0d0                pin_E1_af
  .rodata.pin_C11_af
-                0x000000000003c128       0x30 build-TEENSY_3.6/pins_TEENSY_3.6.o
-                0x000000000003c128                pin_C11_af
+                0x000000000003c100       0x30 build-TEENSY_3.6/pins_TEENSY_3.6.o
+                0x000000000003c100                pin_C11_af
  .rodata.pin_B20
-                0x000000000003c158       0x18 build-TEENSY_3.6/pins_TEENSY_3.6.o
-                0x000000000003c158                pin_B20
+                0x000000000003c130       0x18 build-TEENSY_3.6/pins_TEENSY_3.6.o
+                0x000000000003c130                pin_B20
  .rodata.pin_B21
-                0x000000000003c170       0x18 build-TEENSY_3.6/pins_TEENSY_3.6.o
-                0x000000000003c170                pin_B21
+                0x000000000003c148       0x18 build-TEENSY_3.6/pins_TEENSY_3.6.o
+                0x000000000003c148                pin_B21
  .rodata.pin_B22
-                0x000000000003c188       0x18 build-TEENSY_3.6/pins_TEENSY_3.6.o
-                0x000000000003c188                pin_B22
+                0x000000000003c160       0x18 build-TEENSY_3.6/pins_TEENSY_3.6.o
+                0x000000000003c160                pin_B22
  .rodata.pin_B23
-                0x000000000003c1a0       0x18 build-TEENSY_3.6/pins_TEENSY_3.6.o
-                0x000000000003c1a0                pin_B23
+                0x000000000003c178       0x18 build-TEENSY_3.6/pins_TEENSY_3.6.o
+                0x000000000003c178                pin_B23
  .rodata.pin_A13_af
-                0x000000000003c1b8       0x30 build-TEENSY_3.6/pins_TEENSY_3.6.o
-                0x000000000003c1b8                pin_A13_af
+                0x000000000003c190       0x30 build-TEENSY_3.6/pins_TEENSY_3.6.o
+                0x000000000003c190                pin_A13_af
  .rodata.pin_C7
-                0x000000000003c1e8       0x18 build-TEENSY_3.6/pins_TEENSY_3.6.o
-                0x000000000003c1e8                pin_C7
+                0x000000000003c1c0       0x18 build-TEENSY_3.6/pins_TEENSY_3.6.o
+                0x000000000003c1c0                pin_C7
  .rodata.pin_C9_af
-                0x000000000003c200       0x20 build-TEENSY_3.6/pins_TEENSY_3.6.o
-                0x000000000003c200                pin_C9_af
+                0x000000000003c1d8       0x20 build-TEENSY_3.6/pins_TEENSY_3.6.o
+                0x000000000003c1d8                pin_C9_af
  .rodata.pin_D1_af
-                0x000000000003c220       0x30 build-TEENSY_3.6/pins_TEENSY_3.6.o
-                0x000000000003c220                pin_D1_af
+                0x000000000003c1f8       0x30 build-TEENSY_3.6/pins_TEENSY_3.6.o
+                0x000000000003c1f8                pin_D1_af
  .rodata.pin_A17_af
-                0x000000000003c250       0x10 build-TEENSY_3.6/pins_TEENSY_3.6.o
-                0x000000000003c250                pin_A17_af
+                0x000000000003c228       0x10 build-TEENSY_3.6/pins_TEENSY_3.6.o
+                0x000000000003c228                pin_A17_af
  .rodata.pin_B19_af
-                0x000000000003c260       0x20 build-TEENSY_3.6/pins_TEENSY_3.6.o
-                0x000000000003c260                pin_B19_af
+                0x000000000003c238       0x20 build-TEENSY_3.6/pins_TEENSY_3.6.o
+                0x000000000003c238                pin_B19_af
  .rodata.pin_E4
-                0x000000000003c280       0x18 build-TEENSY_3.6/pins_TEENSY_3.6.o
-                0x000000000003c280                pin_E4
+                0x000000000003c258       0x18 build-TEENSY_3.6/pins_TEENSY_3.6.o
+                0x000000000003c258                pin_E4
  .rodata.pin_D5_af
-                0x000000000003c298       0x30 build-TEENSY_3.6/pins_TEENSY_3.6.o
-                0x000000000003c298                pin_D5_af
+                0x000000000003c270       0x30 build-TEENSY_3.6/pins_TEENSY_3.6.o
+                0x000000000003c270                pin_D5_af
  .rodata.pin_B0_af
-                0x000000000003c2c8       0x50 build-TEENSY_3.6/pins_TEENSY_3.6.o
-                0x000000000003c2c8                pin_B0_af
+                0x000000000003c2a0       0x50 build-TEENSY_3.6/pins_TEENSY_3.6.o
+                0x000000000003c2a0                pin_B0_af
  .rodata.pin_Z12_af
-                0x000000000003c318       0x10 build-TEENSY_3.6/pins_TEENSY_3.6.o
-                0x000000000003c318                pin_Z12_af
+                0x000000000003c2f0       0x10 build-TEENSY_3.6/pins_TEENSY_3.6.o
+                0x000000000003c2f0                pin_Z12_af
  .rodata.pin_Z8
-                0x000000000003c328       0x18 build-TEENSY_3.6/pins_TEENSY_3.6.o
-                0x000000000003c328                pin_Z8
+                0x000000000003c300       0x18 build-TEENSY_3.6/pins_TEENSY_3.6.o
+                0x000000000003c300                pin_Z8
  .rodata.pin_E24_af
-                0x000000000003c340       0x30 build-TEENSY_3.6/pins_TEENSY_3.6.o
-                0x000000000003c340                pin_E24_af
+                0x000000000003c318       0x30 build-TEENSY_3.6/pins_TEENSY_3.6.o
+                0x000000000003c318                pin_E24_af
  .rodata.pin_D9_af
-                0x000000000003c370       0x10 build-TEENSY_3.6/pins_TEENSY_3.6.o
-                0x000000000003c370                pin_D9_af
+                0x000000000003c348       0x10 build-TEENSY_3.6/pins_TEENSY_3.6.o
+                0x000000000003c348                pin_D9_af
  .rodata.pin_B4_af
-                0x000000000003c380       0x10 build-TEENSY_3.6/pins_TEENSY_3.6.o
-                0x000000000003c380                pin_B4_af
+                0x000000000003c358       0x10 build-TEENSY_3.6/pins_TEENSY_3.6.o
+                0x000000000003c358                pin_B4_af
  .rodata.pin_board_pins_locals_dict_table
-                0x000000000003c390      0x2c0 build-TEENSY_3.6/pins_TEENSY_3.6.o
+                0x000000000003c368      0x2c0 build-TEENSY_3.6/pins_TEENSY_3.6.o
  .rodata.pin_E0_af
-                0x000000000003c650       0x30 build-TEENSY_3.6/pins_TEENSY_3.6.o
-                0x000000000003c650                pin_E0_af
+                0x000000000003c628       0x30 build-TEENSY_3.6/pins_TEENSY_3.6.o
+                0x000000000003c628                pin_E0_af
  .rodata.pin_A26
-                0x000000000003c680       0x18 build-TEENSY_3.6/pins_TEENSY_3.6.o
-                0x000000000003c680                pin_A26
+                0x000000000003c658       0x18 build-TEENSY_3.6/pins_TEENSY_3.6.o
+                0x000000000003c658                pin_A26
  .rodata.pin_A28
-                0x000000000003c698       0x18 build-TEENSY_3.6/pins_TEENSY_3.6.o
-                0x000000000003c698                pin_A28
+                0x000000000003c670       0x18 build-TEENSY_3.6/pins_TEENSY_3.6.o
+                0x000000000003c670                pin_A28
  .rodata.pin_A29
-                0x000000000003c6b0       0x18 build-TEENSY_3.6/pins_TEENSY_3.6.o
-                0x000000000003c6b0                pin_A29
+                0x000000000003c688       0x18 build-TEENSY_3.6/pins_TEENSY_3.6.o
+                0x000000000003c688                pin_A29
  .rodata.pin_C3_af
-                0x000000000003c6c8       0x20 build-TEENSY_3.6/pins_TEENSY_3.6.o
-                0x000000000003c6c8                pin_C3_af
+                0x000000000003c6a0       0x20 build-TEENSY_3.6/pins_TEENSY_3.6.o
+                0x000000000003c6a0                pin_C3_af
  .rodata.pin_D0
-                0x000000000003c6e8       0x18 build-TEENSY_3.6/pins_TEENSY_3.6.o
-                0x000000000003c6e8                pin_D0
+                0x000000000003c6c0       0x18 build-TEENSY_3.6/pins_TEENSY_3.6.o
+                0x000000000003c6c0                pin_D0
  .rodata.pin_D1
-                0x000000000003c700       0x18 build-TEENSY_3.6/pins_TEENSY_3.6.o
-                0x000000000003c700                pin_D1
+                0x000000000003c6d8       0x18 build-TEENSY_3.6/pins_TEENSY_3.6.o
+                0x000000000003c6d8                pin_D1
  .rodata.pin_D2
-                0x000000000003c718       0x18 build-TEENSY_3.6/pins_TEENSY_3.6.o
-                0x000000000003c718                pin_D2
+                0x000000000003c6f0       0x18 build-TEENSY_3.6/pins_TEENSY_3.6.o
+                0x000000000003c6f0                pin_D2
  .rodata.pin_D3
-                0x000000000003c730       0x18 build-TEENSY_3.6/pins_TEENSY_3.6.o
-                0x000000000003c730                pin_D3
+                0x000000000003c708       0x18 build-TEENSY_3.6/pins_TEENSY_3.6.o
+                0x000000000003c708                pin_D3
  .rodata.pin_D4
-                0x000000000003c748       0x18 build-TEENSY_3.6/pins_TEENSY_3.6.o
-                0x000000000003c748                pin_D4
+                0x000000000003c720       0x18 build-TEENSY_3.6/pins_TEENSY_3.6.o
+                0x000000000003c720                pin_D4
  .rodata.pin_D5
-                0x000000000003c760       0x18 build-TEENSY_3.6/pins_TEENSY_3.6.o
-                0x000000000003c760                pin_D5
+                0x000000000003c738       0x18 build-TEENSY_3.6/pins_TEENSY_3.6.o
+                0x000000000003c738                pin_D5
  .rodata.pin_D6
-                0x000000000003c778       0x18 build-TEENSY_3.6/pins_TEENSY_3.6.o
-                0x000000000003c778                pin_D6
+                0x000000000003c750       0x18 build-TEENSY_3.6/pins_TEENSY_3.6.o
+                0x000000000003c750                pin_D6
  .rodata.pin_D7
-                0x000000000003c790       0x18 build-TEENSY_3.6/pins_TEENSY_3.6.o
-                0x000000000003c790                pin_D7
+                0x000000000003c768       0x18 build-TEENSY_3.6/pins_TEENSY_3.6.o
+                0x000000000003c768                pin_D7
  .rodata.pin_D8
-                0x000000000003c7a8       0x18 build-TEENSY_3.6/pins_TEENSY_3.6.o
-                0x000000000003c7a8                pin_D8
+                0x000000000003c780       0x18 build-TEENSY_3.6/pins_TEENSY_3.6.o
+                0x000000000003c780                pin_D8
  .rodata.pin_D9
-                0x000000000003c7c0       0x18 build-TEENSY_3.6/pins_TEENSY_3.6.o
-                0x000000000003c7c0                pin_D9
+                0x000000000003c798       0x18 build-TEENSY_3.6/pins_TEENSY_3.6.o
+                0x000000000003c798                pin_D9
  .rodata.pin_E3
-                0x000000000003c7d8       0x18 build-TEENSY_3.6/pins_TEENSY_3.6.o
-                0x000000000003c7d8                pin_E3
+                0x000000000003c7b0       0x18 build-TEENSY_3.6/pins_TEENSY_3.6.o
+                0x000000000003c7b0                pin_E3
  .rodata.pin_B16
-                0x000000000003c7f0       0x18 build-TEENSY_3.6/pins_TEENSY_3.6.o
-                0x000000000003c7f0                pin_B16
+                0x000000000003c7c8       0x18 build-TEENSY_3.6/pins_TEENSY_3.6.o
+                0x000000000003c7c8                pin_B16
  .rodata.pin_A14_af
-                0x000000000003c808       0x20 build-TEENSY_3.6/pins_TEENSY_3.6.o
-                0x000000000003c808                pin_A14_af
+                0x000000000003c7e0       0x20 build-TEENSY_3.6/pins_TEENSY_3.6.o
+                0x000000000003c7e0                pin_A14_af
  .rodata.pin_E5
-                0x000000000003c828       0x18 build-TEENSY_3.6/pins_TEENSY_3.6.o
-                0x000000000003c828                pin_E5
+                0x000000000003c800       0x18 build-TEENSY_3.6/pins_TEENSY_3.6.o
+                0x000000000003c800                pin_E5
  .rodata.pin_B16_af
-                0x000000000003c840       0x10 build-TEENSY_3.6/pins_TEENSY_3.6.o
-                0x000000000003c840                pin_B16_af
+                0x000000000003c818       0x10 build-TEENSY_3.6/pins_TEENSY_3.6.o
+                0x000000000003c818                pin_B16_af
  .rodata.pin_D2_af
-                0x000000000003c850       0x30 build-TEENSY_3.6/pins_TEENSY_3.6.o
-                0x000000000003c850                pin_D2_af
+                0x000000000003c828       0x30 build-TEENSY_3.6/pins_TEENSY_3.6.o
+                0x000000000003c828                pin_D2_af
  .rodata.pin_Z7_af
-                0x000000000003c880       0x20 build-TEENSY_3.6/pins_TEENSY_3.6.o
-                0x000000000003c880                pin_Z7_af
+                0x000000000003c858       0x20 build-TEENSY_3.6/pins_TEENSY_3.6.o
+                0x000000000003c858                pin_Z7_af
  .rodata.pin_B10_af
-                0x000000000003c8a0       0x20 build-TEENSY_3.6/pins_TEENSY_3.6.o
-                0x000000000003c8a0                pin_B10_af
+                0x000000000003c878       0x20 build-TEENSY_3.6/pins_TEENSY_3.6.o
+                0x000000000003c878                pin_B10_af
  .rodata.pin_D6_af
-                0x000000000003c8c0       0x30 build-TEENSY_3.6/pins_TEENSY_3.6.o
-                0x000000000003c8c0                pin_D6_af
+                0x000000000003c898       0x30 build-TEENSY_3.6/pins_TEENSY_3.6.o
+                0x000000000003c898                pin_D6_af
  .rodata.pin_B21_af
-                0x000000000003c8f0       0x10 build-TEENSY_3.6/pins_TEENSY_3.6.o
-                0x000000000003c8f0                pin_B21_af
+                0x000000000003c8c8       0x10 build-TEENSY_3.6/pins_TEENSY_3.6.o
+                0x000000000003c8c8                pin_B21_af
  .rodata.pin_B1_af
-                0x000000000003c900       0x50 build-TEENSY_3.6/pins_TEENSY_3.6.o
-                0x000000000003c900                pin_B1_af
+                0x000000000003c8d8       0x50 build-TEENSY_3.6/pins_TEENSY_3.6.o
+                0x000000000003c8d8                pin_B1_af
  .rodata.pin_Z13_af
-                0x000000000003c950       0x10 build-TEENSY_3.6/pins_TEENSY_3.6.o
-                0x000000000003c950                pin_Z13_af
+                0x000000000003c928       0x10 build-TEENSY_3.6/pins_TEENSY_3.6.o
+                0x000000000003c928                pin_Z13_af
  .rodata.pin_cpu_pins_locals_dict_table
-                0x000000000003c960      0x220 build-TEENSY_3.6/pins_TEENSY_3.6.o
+                0x000000000003c938      0x220 build-TEENSY_3.6/pins_TEENSY_3.6.o
  .rodata.pin_E25_af
-                0x000000000003cb80       0x30 build-TEENSY_3.6/pins_TEENSY_3.6.o
-                0x000000000003cb80                pin_E25_af
+                0x000000000003cb58       0x30 build-TEENSY_3.6/pins_TEENSY_3.6.o
+                0x000000000003cb58                pin_E25_af
  .rodata.pin_A5_af
-                0x000000000003cbb0       0x10 build-TEENSY_3.6/pins_TEENSY_3.6.o
-                0x000000000003cbb0                pin_A5_af
+                0x000000000003cb88       0x10 build-TEENSY_3.6/pins_TEENSY_3.6.o
+                0x000000000003cb88                pin_A5_af
  .rodata.pin_E11_af
-                0x000000000003cbc0       0x20 build-TEENSY_3.6/pins_TEENSY_3.6.o
-                0x000000000003cbc0                pin_E11_af
+                0x000000000003cb98       0x20 build-TEENSY_3.6/pins_TEENSY_3.6.o
+                0x000000000003cb98                pin_E11_af
  .rodata.pin_B5_af
-                0x000000000003cbe0       0x10 build-TEENSY_3.6/pins_TEENSY_3.6.o
-                0x000000000003cbe0                pin_B5_af
+                0x000000000003cbb8       0x10 build-TEENSY_3.6/pins_TEENSY_3.6.o
+                0x000000000003cbb8                pin_B5_af
  .rodata.pin_C11
-                0x000000000003cbf0       0x18 build-TEENSY_3.6/pins_TEENSY_3.6.o
-                0x000000000003cbf0                pin_C11
+                0x000000000003cbc8       0x18 build-TEENSY_3.6/pins_TEENSY_3.6.o
+                0x000000000003cbc8                pin_C11
  .rodata.pin_E10
-                0x000000000003cc08       0x18 build-TEENSY_3.6/pins_TEENSY_3.6.o
-                0x000000000003cc08                pin_E10
+                0x000000000003cbe0       0x18 build-TEENSY_3.6/pins_TEENSY_3.6.o
+                0x000000000003cbe0                pin_E10
  .rodata.pin_E11
-                0x000000000003cc20       0x18 build-TEENSY_3.6/pins_TEENSY_3.6.o
-                0x000000000003cc20                pin_E11
+                0x000000000003cbf8       0x18 build-TEENSY_3.6/pins_TEENSY_3.6.o
+                0x000000000003cbf8                pin_E11
  .rodata.pin_A5
-                0x000000000003cc38       0x18 build-TEENSY_3.6/pins_TEENSY_3.6.o
-                0x000000000003cc38                pin_A5
+                0x000000000003cc10       0x18 build-TEENSY_3.6/pins_TEENSY_3.6.o
+                0x000000000003cc10                pin_A5
  .rodata.pin_E4_af
-                0x000000000003cc50       0x10 build-TEENSY_3.6/pins_TEENSY_3.6.o
-                0x000000000003cc50                pin_E4_af
+                0x000000000003cc28       0x10 build-TEENSY_3.6/pins_TEENSY_3.6.o
+                0x000000000003cc28                pin_E4_af
  .rodata.pin_E5_af
-                0x000000000003cc60       0x20 build-TEENSY_3.6/pins_TEENSY_3.6.o
-                0x000000000003cc60                pin_E5_af
+                0x000000000003cc38       0x20 build-TEENSY_3.6/pins_TEENSY_3.6.o
+                0x000000000003cc38                pin_E5_af
  .rodata.pin_C0_af
-                0x000000000003cc80       0x10 build-TEENSY_3.6/pins_TEENSY_3.6.o
-                0x000000000003cc80                pin_C0_af
+                0x000000000003cc58       0x10 build-TEENSY_3.6/pins_TEENSY_3.6.o
+                0x000000000003cc58                pin_C0_af
  .rodata.pin_E0
-                0x000000000003cc90       0x18 build-TEENSY_3.6/pins_TEENSY_3.6.o
-                0x000000000003cc90                pin_E0
+                0x000000000003cc68       0x18 build-TEENSY_3.6/pins_TEENSY_3.6.o
+                0x000000000003cc68                pin_E0
  .rodata.pin_E1
-                0x000000000003cca8       0x18 build-TEENSY_3.6/pins_TEENSY_3.6.o
-                0x000000000003cca8                pin_E1
+                0x000000000003cc80       0x18 build-TEENSY_3.6/pins_TEENSY_3.6.o
+                0x000000000003cc80                pin_E1
  .rodata.pin_E2
-                0x000000000003ccc0       0x18 build-TEENSY_3.6/pins_TEENSY_3.6.o
-                0x000000000003ccc0                pin_E2
+                0x000000000003cc98       0x18 build-TEENSY_3.6/pins_TEENSY_3.6.o
+                0x000000000003cc98                pin_E2
  .rodata.pin_C4_af
-                0x000000000003ccd8       0x20 build-TEENSY_3.6/pins_TEENSY_3.6.o
-                0x000000000003ccd8                pin_C4_af
+                0x000000000003ccb0       0x20 build-TEENSY_3.6/pins_TEENSY_3.6.o
+                0x000000000003ccb0                pin_C4_af
  .rodata.pin_B11
-                0x000000000003ccf8       0x18 build-TEENSY_3.6/pins_TEENSY_3.6.o
-                0x000000000003ccf8                pin_B11
+                0x000000000003ccd0       0x18 build-TEENSY_3.6/pins_TEENSY_3.6.o
+                0x000000000003ccd0                pin_B11
  .rodata.pin_B11_af
-                0x000000000003cd10       0x30 build-TEENSY_3.6/pins_TEENSY_3.6.o
-                0x000000000003cd10                pin_B11_af
+                0x000000000003cce8       0x30 build-TEENSY_3.6/pins_TEENSY_3.6.o
+                0x000000000003cce8                pin_B11_af
  .rodata.pin_C8_af
-                0x000000000003cd40       0x20 build-TEENSY_3.6/pins_TEENSY_3.6.o
-                0x000000000003cd40                pin_C8_af
+                0x000000000003cd18       0x20 build-TEENSY_3.6/pins_TEENSY_3.6.o
+                0x000000000003cd18                pin_C8_af
  .rodata.pin_D11
-                0x000000000003cd60       0x18 build-TEENSY_3.6/pins_TEENSY_3.6.o
-                0x000000000003cd60                pin_D11
+                0x000000000003cd38       0x18 build-TEENSY_3.6/pins_TEENSY_3.6.o
+                0x000000000003cd38                pin_D11
  .rodata.pin_D12
-                0x000000000003cd78       0x18 build-TEENSY_3.6/pins_TEENSY_3.6.o
-                0x000000000003cd78                pin_D12
+                0x000000000003cd50       0x18 build-TEENSY_3.6/pins_TEENSY_3.6.o
+                0x000000000003cd50                pin_D12
  .rodata.pin_D13
-                0x000000000003cd90       0x18 build-TEENSY_3.6/pins_TEENSY_3.6.o
-                0x000000000003cd90                pin_D13
+                0x000000000003cd68       0x18 build-TEENSY_3.6/pins_TEENSY_3.6.o
+                0x000000000003cd68                pin_D13
  .rodata.pin_D14
-                0x000000000003cda8       0x18 build-TEENSY_3.6/pins_TEENSY_3.6.o
-                0x000000000003cda8                pin_D14
+                0x000000000003cd80       0x18 build-TEENSY_3.6/pins_TEENSY_3.6.o
+                0x000000000003cd80                pin_D14
  .rodata.pin_D15
-                0x000000000003cdc0       0x18 build-TEENSY_3.6/pins_TEENSY_3.6.o
-                0x000000000003cdc0                pin_D15
+                0x000000000003cd98       0x18 build-TEENSY_3.6/pins_TEENSY_3.6.o
+                0x000000000003cd98                pin_D15
  .rodata.pin_A15_af
-                0x000000000003cdd8       0x20 build-TEENSY_3.6/pins_TEENSY_3.6.o
-                0x000000000003cdd8                pin_A15_af
+                0x000000000003cdb0       0x20 build-TEENSY_3.6/pins_TEENSY_3.6.o
+                0x000000000003cdb0                pin_A15_af
  .rodata.pin_B17_af
-                0x000000000003cdf8       0x10 build-TEENSY_3.6/pins_TEENSY_3.6.o
-                0x000000000003cdf8                pin_B17_af
+                0x000000000003cdd0       0x10 build-TEENSY_3.6/pins_TEENSY_3.6.o
+                0x000000000003cdd0                pin_B17_af
  .rodata.pin_D3_af
-                0x000000000003ce08       0x30 build-TEENSY_3.6/pins_TEENSY_3.6.o
-                0x000000000003ce08                pin_D3_af
+                0x000000000003cde0       0x30 build-TEENSY_3.6/pins_TEENSY_3.6.o
+                0x000000000003cde0                pin_D3_af
  .rodata.pin_Z8_af
-                0x000000000003ce38       0x10 build-TEENSY_3.6/pins_TEENSY_3.6.o
-                0x000000000003ce38                pin_Z8_af
+                0x000000000003ce10       0x10 build-TEENSY_3.6/pins_TEENSY_3.6.o
+                0x000000000003ce10                pin_Z8_af
  .rodata.pin_D7_af
-                0x000000000003ce48       0x20 build-TEENSY_3.6/pins_TEENSY_3.6.o
-                0x000000000003ce48                pin_D7_af
+                0x000000000003ce20       0x20 build-TEENSY_3.6/pins_TEENSY_3.6.o
+                0x000000000003ce20                pin_D7_af
  .rodata.pin_B2_af
-                0x000000000003ce68       0x20 build-TEENSY_3.6/pins_TEENSY_3.6.o
-                0x000000000003ce68                pin_B2_af
+                0x000000000003ce40       0x20 build-TEENSY_3.6/pins_TEENSY_3.6.o
+                0x000000000003ce40                pin_B2_af
  .rodata.pin_Z7
-                0x000000000003ce88       0x18 build-TEENSY_3.6/pins_TEENSY_3.6.o
-                0x000000000003ce88                pin_Z7
+                0x000000000003ce60       0x18 build-TEENSY_3.6/pins_TEENSY_3.6.o
+                0x000000000003ce60                pin_Z7
  .rodata.pin_C10
-                0x000000000003cea0       0x18 build-TEENSY_3.6/pins_TEENSY_3.6.o
-                0x000000000003cea0                pin_C10
+                0x000000000003ce78       0x18 build-TEENSY_3.6/pins_TEENSY_3.6.o
+                0x000000000003ce78                pin_C10
  .rodata.pin_B3_af
-                0x000000000003ceb8       0x20 build-TEENSY_3.6/pins_TEENSY_3.6.o
-                0x000000000003ceb8                pin_B3_af
+                0x000000000003ce90       0x20 build-TEENSY_3.6/pins_TEENSY_3.6.o
+                0x000000000003ce90                pin_B3_af
  .rodata.pin_E2_af
-                0x000000000003ced8       0x20 build-TEENSY_3.6/pins_TEENSY_3.6.o
-                0x000000000003ced8                pin_E2_af
+                0x000000000003ceb0       0x20 build-TEENSY_3.6/pins_TEENSY_3.6.o
+                0x000000000003ceb0                pin_E2_af
  .rodata.pin_B0
-                0x000000000003cef8       0x18 build-TEENSY_3.6/pins_TEENSY_3.6.o
-                0x000000000003cef8                pin_B0
+                0x000000000003ced0       0x18 build-TEENSY_3.6/pins_TEENSY_3.6.o
+                0x000000000003ced0                pin_B0
  .rodata.pin_B1
-                0x000000000003cf10       0x18 build-TEENSY_3.6/pins_TEENSY_3.6.o
-                0x000000000003cf10                pin_B1
+                0x000000000003cee8       0x18 build-TEENSY_3.6/pins_TEENSY_3.6.o
+                0x000000000003cee8                pin_B1
  .rodata.pin_B2
-                0x000000000003cf28       0x18 build-TEENSY_3.6/pins_TEENSY_3.6.o
-                0x000000000003cf28                pin_B2
+                0x000000000003cf00       0x18 build-TEENSY_3.6/pins_TEENSY_3.6.o
+                0x000000000003cf00                pin_B2
  .rodata.pin_B3
-                0x000000000003cf40       0x18 build-TEENSY_3.6/pins_TEENSY_3.6.o
-                0x000000000003cf40                pin_B3
+                0x000000000003cf18       0x18 build-TEENSY_3.6/pins_TEENSY_3.6.o
+                0x000000000003cf18                pin_B3
  .rodata.pin_B4
-                0x000000000003cf58       0x18 build-TEENSY_3.6/pins_TEENSY_3.6.o
-                0x000000000003cf58                pin_B4
+                0x000000000003cf30       0x18 build-TEENSY_3.6/pins_TEENSY_3.6.o
+                0x000000000003cf30                pin_B4
  .rodata.pin_B5
-                0x000000000003cf70       0x18 build-TEENSY_3.6/pins_TEENSY_3.6.o
-                0x000000000003cf70                pin_B5
+                0x000000000003cf48       0x18 build-TEENSY_3.6/pins_TEENSY_3.6.o
+                0x000000000003cf48                pin_B5
  .rodata.pin_E26
-                0x000000000003cf88       0x18 build-TEENSY_3.6/pins_TEENSY_3.6.o
-                0x000000000003cf88                pin_E26
+                0x000000000003cf60       0x18 build-TEENSY_3.6/pins_TEENSY_3.6.o
+                0x000000000003cf60                pin_E26
  .rodata.pin_cpu_pins_locals_dict
-                0x000000000003cfa0       0x10 build-TEENSY_3.6/pins_TEENSY_3.6.o
-                0x000000000003cfa0                pin_cpu_pins_locals_dict
+                0x000000000003cf78       0x10 build-TEENSY_3.6/pins_TEENSY_3.6.o
+                0x000000000003cf78                pin_cpu_pins_locals_dict
  .rodata.pin_C1_af
-                0x000000000003cfb0       0x20 build-TEENSY_3.6/pins_TEENSY_3.6.o
-                0x000000000003cfb0                pin_C1_af
+                0x000000000003cf88       0x20 build-TEENSY_3.6/pins_TEENSY_3.6.o
+                0x000000000003cf88                pin_C1_af
  .rodata.pin_E10_af
-                0x000000000003cfd0       0x20 build-TEENSY_3.6/pins_TEENSY_3.6.o
-                0x000000000003cfd0                pin_E10_af
+                0x000000000003cfa8       0x20 build-TEENSY_3.6/pins_TEENSY_3.6.o
+                0x000000000003cfa8                pin_E10_af
  .rodata.pin_C5_af
-                0x000000000003cff0       0x20 build-TEENSY_3.6/pins_TEENSY_3.6.o
-                0x000000000003cff0                pin_C5_af
+                0x000000000003cfc8       0x20 build-TEENSY_3.6/pins_TEENSY_3.6.o
+                0x000000000003cfc8                pin_C5_af
  .rodata.pin_C10_af
-                0x000000000003d010       0x30 build-TEENSY_3.6/pins_TEENSY_3.6.o
-                0x000000000003d010                pin_C10_af
+                0x000000000003cfe8       0x30 build-TEENSY_3.6/pins_TEENSY_3.6.o
+                0x000000000003cfe8                pin_C10_af
  .rodata.pin_B10
-                0x000000000003d040       0x18 build-TEENSY_3.6/pins_TEENSY_3.6.o
-                0x000000000003d040                pin_B10
+                0x000000000003d018       0x18 build-TEENSY_3.6/pins_TEENSY_3.6.o
+                0x000000000003d018                pin_B10
  .rodata.pin_D12_af
-                0x000000000003d058       0x10 build-TEENSY_3.6/pins_TEENSY_3.6.o
-                0x000000000003d058                pin_D12_af
+                0x000000000003d030       0x10 build-TEENSY_3.6/pins_TEENSY_3.6.o
+                0x000000000003d030                pin_D12_af
  .rodata.pin_A12_af
-                0x000000000003d068       0x30 build-TEENSY_3.6/pins_TEENSY_3.6.o
-                0x000000000003d068                pin_A12_af
+                0x000000000003d040       0x30 build-TEENSY_3.6/pins_TEENSY_3.6.o
+                0x000000000003d040                pin_A12_af
  .rodata.pin_B17
-                0x000000000003d098       0x18 build-TEENSY_3.6/pins_TEENSY_3.6.o
-                0x000000000003d098                pin_B17
+                0x000000000003d070       0x18 build-TEENSY_3.6/pins_TEENSY_3.6.o
+                0x000000000003d070                pin_B17
  .rodata.pin_B18
-                0x000000000003d0b0       0x18 build-TEENSY_3.6/pins_TEENSY_3.6.o
-                0x000000000003d0b0                pin_B18
+                0x000000000003d088       0x18 build-TEENSY_3.6/pins_TEENSY_3.6.o
+                0x000000000003d088                pin_B18
  .rodata.pin_B19
-                0x000000000003d0c8       0x18 build-TEENSY_3.6/pins_TEENSY_3.6.o
-                0x000000000003d0c8                pin_B19
+                0x000000000003d0a0       0x18 build-TEENSY_3.6/pins_TEENSY_3.6.o
+                0x000000000003d0a0                pin_B19
  .rodata.pin_E24
-                0x000000000003d0e0       0x18 build-TEENSY_3.6/pins_TEENSY_3.6.o
-                0x000000000003d0e0                pin_E24
+                0x000000000003d0b8       0x18 build-TEENSY_3.6/pins_TEENSY_3.6.o
+                0x000000000003d0b8                pin_E24
  .rodata.pin_D0_af
-                0x000000000003d0f8       0x10 build-TEENSY_3.6/pins_TEENSY_3.6.o
-                0x000000000003d0f8                pin_D0_af
+                0x000000000003d0d0       0x10 build-TEENSY_3.6/pins_TEENSY_3.6.o
+                0x000000000003d0d0                pin_D0_af
  .rodata.pin_board_pins_locals_dict
-                0x000000000003d108       0x10 build-TEENSY_3.6/pins_TEENSY_3.6.o
-                0x000000000003d108                pin_board_pins_locals_dict
+                0x000000000003d0e0       0x10 build-TEENSY_3.6/pins_TEENSY_3.6.o
+                0x000000000003d0e0                pin_board_pins_locals_dict
  .rodata.pin_B18_af
-                0x000000000003d118       0x20 build-TEENSY_3.6/pins_TEENSY_3.6.o
-                0x000000000003d118                pin_B18_af
+                0x000000000003d0f0       0x20 build-TEENSY_3.6/pins_TEENSY_3.6.o
+                0x000000000003d0f0                pin_B18_af
  .rodata.pin_D4_af
-                0x000000000003d138       0x10 build-TEENSY_3.6/pins_TEENSY_3.6.o
-                0x000000000003d138                pin_D4_af
+                0x000000000003d110       0x10 build-TEENSY_3.6/pins_TEENSY_3.6.o
+                0x000000000003d110                pin_D4_af
  .rodata.pin_D8_af
-                0x000000000003d148       0x10 build-TEENSY_3.6/pins_TEENSY_3.6.o
-                0x000000000003d148                pin_D8_af
+                0x000000000003d120       0x10 build-TEENSY_3.6/pins_TEENSY_3.6.o
+                0x000000000003d120                pin_D8_af
  .rodata.pin_A12
-                0x000000000003d158       0x18 build-TEENSY_3.6/pins_TEENSY_3.6.o
-                0x000000000003d158                pin_A12
+                0x000000000003d130       0x18 build-TEENSY_3.6/pins_TEENSY_3.6.o
+                0x000000000003d130                pin_A12
  .rodata.pin_A13
-                0x000000000003d170       0x18 build-TEENSY_3.6/pins_TEENSY_3.6.o
-                0x000000000003d170                pin_A13
+                0x000000000003d148       0x18 build-TEENSY_3.6/pins_TEENSY_3.6.o
+                0x000000000003d148                pin_A13
  .rodata.pin_A14
-                0x000000000003d188       0x18 build-TEENSY_3.6/pins_TEENSY_3.6.o
-                0x000000000003d188                pin_A14
+                0x000000000003d160       0x18 build-TEENSY_3.6/pins_TEENSY_3.6.o
+                0x000000000003d160                pin_A14
  .rodata.pin_A15
-                0x000000000003d1a0       0x18 build-TEENSY_3.6/pins_TEENSY_3.6.o
-                0x000000000003d1a0                pin_A15
+                0x000000000003d178       0x18 build-TEENSY_3.6/pins_TEENSY_3.6.o
+                0x000000000003d178                pin_A15
  .rodata.pin_A16
-                0x000000000003d1b8       0x18 build-TEENSY_3.6/pins_TEENSY_3.6.o
-                0x000000000003d1b8                pin_A16
+                0x000000000003d190       0x18 build-TEENSY_3.6/pins_TEENSY_3.6.o
+                0x000000000003d190                pin_A16
  .rodata.pin_A17
-                0x000000000003d1d0       0x18 build-TEENSY_3.6/pins_TEENSY_3.6.o
-                0x000000000003d1d0                pin_A17
+                0x000000000003d1a8       0x18 build-TEENSY_3.6/pins_TEENSY_3.6.o
+                0x000000000003d1a8                pin_A17
  .rodata.pin_E25
-                0x000000000003d1e8       0x18 build-TEENSY_3.6/pins_TEENSY_3.6.o
-                0x000000000003d1e8                pin_E25
+                0x000000000003d1c0       0x18 build-TEENSY_3.6/pins_TEENSY_3.6.o
+                0x000000000003d1c0                pin_E25
  .rodata.pin_E3_af
-                0x000000000003d200       0x10 build-TEENSY_3.6/pins_TEENSY_3.6.o
-                0x000000000003d200                pin_E3_af
+                0x000000000003d1d8       0x10 build-TEENSY_3.6/pins_TEENSY_3.6.o
+                0x000000000003d1d8                pin_E3_af
  .rodata.atanlo
-                0x000000000003d210       0x10 /usr/local/Cellar/gcc-arm-none-eabi-49/20150925/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/fpu//libm.a(lib_a-sf_atan.o)
+                0x000000000003d1e8       0x10 /usr/local/Cellar/gcc-arm-none-eabi-49/20150925/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/fpu//libm.a(lib_a-sf_atan.o)
  .rodata.atanhi
-                0x000000000003d220       0x10 /usr/local/Cellar/gcc-arm-none-eabi-49/20150925/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/fpu//libm.a(lib_a-sf_atan.o)
+                0x000000000003d1f8       0x10 /usr/local/Cellar/gcc-arm-none-eabi-49/20150925/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/fpu//libm.a(lib_a-sf_atan.o)
  .rodata.str1.4
-                0x000000000003d230        0x6 /usr/local/Cellar/gcc-arm-none-eabi-49/20150925/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/fpu//libm.a(lib_a-wf_acos.o)
+                0x000000000003d208        0x6 /usr/local/Cellar/gcc-arm-none-eabi-49/20150925/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/fpu//libm.a(lib_a-wf_acos.o)
                                           0x9 (size before relaxing)
- *fill*         0x000000000003d236        0x2 ff
+ *fill*         0x000000000003d20e        0x2 ff
  .rodata.str1.4
-                0x000000000003d238        0x7 /usr/local/Cellar/gcc-arm-none-eabi-49/20150925/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/fpu//libm.a(lib_a-wf_acosh.o)
- *fill*         0x000000000003d23f        0x1 ff
+                0x000000000003d210        0x7 /usr/local/Cellar/gcc-arm-none-eabi-49/20150925/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/fpu//libm.a(lib_a-wf_acosh.o)
+ *fill*         0x000000000003d217        0x1 ff
  .rodata.str1.4
-                0x000000000003d240        0x6 /usr/local/Cellar/gcc-arm-none-eabi-49/20150925/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/fpu//libm.a(lib_a-wf_asin.o)
+                0x000000000003d218        0x6 /usr/local/Cellar/gcc-arm-none-eabi-49/20150925/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/fpu//libm.a(lib_a-wf_asin.o)
                                           0x9 (size before relaxing)
- *fill*         0x000000000003d246        0x2 ff
+ *fill*         0x000000000003d21e        0x2 ff
  .rodata.str1.4
-                0x000000000003d248        0x7 /usr/local/Cellar/gcc-arm-none-eabi-49/20150925/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/fpu//libm.a(lib_a-wf_atanh.o)
- *fill*         0x000000000003d24f        0x1 ff
+                0x000000000003d220        0x7 /usr/local/Cellar/gcc-arm-none-eabi-49/20150925/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/fpu//libm.a(lib_a-wf_atanh.o)
+ *fill*         0x000000000003d227        0x1 ff
  .rodata.str1.4
-                0x000000000003d250        0x6 /usr/local/Cellar/gcc-arm-none-eabi-49/20150925/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/fpu//libm.a(lib_a-wf_cosh.o)
- *fill*         0x000000000003d256        0x2 ff
+                0x000000000003d228        0x6 /usr/local/Cellar/gcc-arm-none-eabi-49/20150925/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/fpu//libm.a(lib_a-wf_cosh.o)
+ *fill*         0x000000000003d22e        0x2 ff
  .rodata.str1.4
-                0x000000000003d258        0x5 /usr/local/Cellar/gcc-arm-none-eabi-49/20150925/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/fpu//libm.a(lib_a-wf_exp.o)
+                0x000000000003d230        0x5 /usr/local/Cellar/gcc-arm-none-eabi-49/20150925/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/fpu//libm.a(lib_a-wf_exp.o)
+ *fill*         0x000000000003d235        0x3 ff
+ .rodata.str1.4
+                0x000000000003d238        0x6 /usr/local/Cellar/gcc-arm-none-eabi-49/20150925/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/fpu//libm.a(lib_a-wf_fmod.o)
+ *fill*         0x000000000003d23e        0x2 ff
+ .rodata.str1.4
+                0x000000000003d240        0x8 /usr/local/Cellar/gcc-arm-none-eabi-49/20150925/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/fpu//libm.a(lib_a-wf_lgamma.o)
+ .rodata.str1.4
+                0x000000000003d248        0x5 /usr/local/Cellar/gcc-arm-none-eabi-49/20150925/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/fpu//libm.a(lib_a-wf_log.o)
+                                          0x9 (size before relaxing)
+ *fill*         0x000000000003d24d        0x3 ff
+ .rodata.str1.4
+                0x000000000003d250        0x7 /usr/local/Cellar/gcc-arm-none-eabi-49/20150925/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/fpu//libm.a(lib_a-wf_log10.o)
+                                          0x9 (size before relaxing)
+ *fill*         0x000000000003d257        0x1 ff
+ .rodata.str1.4
+                0x000000000003d258        0x5 /usr/local/Cellar/gcc-arm-none-eabi-49/20150925/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/fpu//libm.a(lib_a-wf_pow.o)
  *fill*         0x000000000003d25d        0x3 ff
  .rodata.str1.4
-                0x000000000003d260        0x6 /usr/local/Cellar/gcc-arm-none-eabi-49/20150925/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/fpu//libm.a(lib_a-wf_fmod.o)
+                0x000000000003d260        0x6 /usr/local/Cellar/gcc-arm-none-eabi-49/20150925/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/fpu//libm.a(lib_a-wf_sinh.o)
  *fill*         0x000000000003d266        0x2 ff
  .rodata.str1.4
-                0x000000000003d268        0x8 /usr/local/Cellar/gcc-arm-none-eabi-49/20150925/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/fpu//libm.a(lib_a-wf_lgamma.o)
- .rodata.str1.4
-                0x000000000003d270        0x5 /usr/local/Cellar/gcc-arm-none-eabi-49/20150925/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/fpu//libm.a(lib_a-wf_log.o)
-                                          0x9 (size before relaxing)
- *fill*         0x000000000003d275        0x3 ff
- .rodata.str1.4
-                0x000000000003d278        0x7 /usr/local/Cellar/gcc-arm-none-eabi-49/20150925/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/fpu//libm.a(lib_a-wf_log10.o)
-                                          0x9 (size before relaxing)
- *fill*         0x000000000003d27f        0x1 ff
- .rodata.str1.4
-                0x000000000003d280        0x5 /usr/local/Cellar/gcc-arm-none-eabi-49/20150925/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/fpu//libm.a(lib_a-wf_pow.o)
- *fill*         0x000000000003d285        0x3 ff
- .rodata.str1.4
-                0x000000000003d288        0x6 /usr/local/Cellar/gcc-arm-none-eabi-49/20150925/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/fpu//libm.a(lib_a-wf_sinh.o)
- *fill*         0x000000000003d28e        0x2 ff
- .rodata.str1.4
-                0x000000000003d290        0x6 /usr/local/Cellar/gcc-arm-none-eabi-49/20150925/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/fpu//libm.a(lib_a-wf_sqrt.o)
- *fill*         0x000000000003d296        0x2 ff
- .rodata.halF   0x000000000003d298        0x8 /usr/local/Cellar/gcc-arm-none-eabi-49/20150925/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/fpu//libm.a(lib_a-ef_exp.o)
- .rodata.ln2LO  0x000000000003d2a0        0x8 /usr/local/Cellar/gcc-arm-none-eabi-49/20150925/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/fpu//libm.a(lib_a-ef_exp.o)
- .rodata.ln2HI  0x000000000003d2a8        0x8 /usr/local/Cellar/gcc-arm-none-eabi-49/20150925/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/fpu//libm.a(lib_a-ef_exp.o)
- .rodata.Zero   0x000000000003d2b0        0x8 /usr/local/Cellar/gcc-arm-none-eabi-49/20150925/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/fpu//libm.a(lib_a-ef_fmod.o)
- .rodata.dp_h   0x000000000003d2b8        0x8 /usr/local/Cellar/gcc-arm-none-eabi-49/20150925/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/fpu//libm.a(lib_a-ef_pow.o)
- .rodata.dp_l   0x000000000003d2c0        0x8 /usr/local/Cellar/gcc-arm-none-eabi-49/20150925/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/fpu//libm.a(lib_a-ef_pow.o)
- .rodata.bp     0x000000000003d2c8        0x8 /usr/local/Cellar/gcc-arm-none-eabi-49/20150925/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/fpu//libm.a(lib_a-ef_pow.o)
+                0x000000000003d268        0x6 /usr/local/Cellar/gcc-arm-none-eabi-49/20150925/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/fpu//libm.a(lib_a-wf_sqrt.o)
+ *fill*         0x000000000003d26e        0x2 ff
+ .rodata.halF   0x000000000003d270        0x8 /usr/local/Cellar/gcc-arm-none-eabi-49/20150925/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/fpu//libm.a(lib_a-ef_exp.o)
+ .rodata.ln2LO  0x000000000003d278        0x8 /usr/local/Cellar/gcc-arm-none-eabi-49/20150925/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/fpu//libm.a(lib_a-ef_exp.o)
+ .rodata.ln2HI  0x000000000003d280        0x8 /usr/local/Cellar/gcc-arm-none-eabi-49/20150925/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/fpu//libm.a(lib_a-ef_exp.o)
+ .rodata.Zero   0x000000000003d288        0x8 /usr/local/Cellar/gcc-arm-none-eabi-49/20150925/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/fpu//libm.a(lib_a-ef_fmod.o)
+ .rodata.dp_h   0x000000000003d290        0x8 /usr/local/Cellar/gcc-arm-none-eabi-49/20150925/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/fpu//libm.a(lib_a-ef_pow.o)
+ .rodata.dp_l   0x000000000003d298        0x8 /usr/local/Cellar/gcc-arm-none-eabi-49/20150925/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/fpu//libm.a(lib_a-ef_pow.o)
+ .rodata.bp     0x000000000003d2a0        0x8 /usr/local/Cellar/gcc-arm-none-eabi-49/20150925/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/fpu//libm.a(lib_a-ef_pow.o)
  .rodata.str1.4
                 0x0000000000000000        0x1 /usr/local/Cellar/gcc-arm-none-eabi-49/20150925/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/fpu//libm.a(lib_a-ef_pow.o)
  .rodata.npio2_hw
-                0x000000000003d2d0       0x80 /usr/local/Cellar/gcc-arm-none-eabi-49/20150925/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/fpu//libm.a(lib_a-ef_rem_pio2.o)
+                0x000000000003d2a8       0x80 /usr/local/Cellar/gcc-arm-none-eabi-49/20150925/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/fpu//libm.a(lib_a-ef_rem_pio2.o)
  .rodata.two_over_pi
-                0x000000000003d350      0x318 /usr/local/Cellar/gcc-arm-none-eabi-49/20150925/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/fpu//libm.a(lib_a-ef_rem_pio2.o)
+                0x000000000003d328      0x318 /usr/local/Cellar/gcc-arm-none-eabi-49/20150925/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/fpu//libm.a(lib_a-ef_rem_pio2.o)
  .rodata.str1.4
-                0x000000000003d668       0xe3 /usr/local/Cellar/gcc-arm-none-eabi-49/20150925/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/fpu//libm.a(lib_a-k_standard.o)
+                0x000000000003d640       0xe3 /usr/local/Cellar/gcc-arm-none-eabi-49/20150925/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/fpu//libm.a(lib_a-k_standard.o)
                                         0x14b (size before relaxing)
- *fill*         0x000000000003d74b        0x1 ff
+ *fill*         0x000000000003d723        0x1 ff
  .rodata.init_jk
-                0x000000000003d74c        0xc /usr/local/Cellar/gcc-arm-none-eabi-49/20150925/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/fpu//libm.a(lib_a-kf_rem_pio2.o)
- .rodata.PIo2   0x000000000003d758       0x2c /usr/local/Cellar/gcc-arm-none-eabi-49/20150925/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/fpu//libm.a(lib_a-kf_rem_pio2.o)
- *fill*         0x000000000003d784        0x4 ff
- .rodata.TWO52  0x000000000003d788       0x10 /usr/local/Cellar/gcc-arm-none-eabi-49/20150925/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/fpu//libm.a(lib_a-s_rint.o)
+                0x000000000003d724        0xc /usr/local/Cellar/gcc-arm-none-eabi-49/20150925/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/fpu//libm.a(lib_a-kf_rem_pio2.o)
+ .rodata.PIo2   0x000000000003d730       0x2c /usr/local/Cellar/gcc-arm-none-eabi-49/20150925/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/fpu//libm.a(lib_a-kf_rem_pio2.o)
+ *fill*         0x000000000003d75c        0x4 ff
+ .rodata.TWO52  0x000000000003d760       0x10 /usr/local/Cellar/gcc-arm-none-eabi-49/20150925/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/fpu//libm.a(lib_a-s_rint.o)
  .rodata.str1.4
-                0x000000000003d798        0x4 /usr/local/Cellar/gcc-arm-none-eabi-49/20150925/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/fpu//libc.a(lib_a-impure.o)
+                0x000000000003d770        0x4 /usr/local/Cellar/gcc-arm-none-eabi-49/20150925/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/fpu//libc.a(lib_a-impure.o)
                                           0x2 (size before relaxing)
-                0x000000000003d79c                . = ALIGN (0x4)
+                0x000000000003d774                . = ALIGN (0x4)
  *(.init)
-                0x000000000003d79c                . = ALIGN (0x4)
-                0x000000000003d79c                __preinit_array_start = .
+                0x000000000003d774                . = ALIGN (0x4)
+                0x000000000003d774                __preinit_array_start = .
  *(.preinit_array)
-                0x000000000003d79c                __preinit_array_end = .
-                0x000000000003d79c                __init_array_start = .
+                0x000000000003d774                __preinit_array_end = .
+                0x000000000003d774                __init_array_start = .
  *(SORT(.init_array.*))
  *(.init_array)
-                0x000000000003d79c                __init_array_end = .
+                0x000000000003d774                __init_array_end = .
 
-.glue_7         0x000000000003d79c        0x0
+.glue_7         0x000000000003d774        0x0
  .glue_7        0x0000000000000000        0x0 linker stubs
 
-.glue_7t        0x000000000003d79c        0x0
+.glue_7t        0x000000000003d774        0x0
  .glue_7t       0x0000000000000000        0x0 linker stubs
 
-.vfp11_veneer   0x000000000003d79c        0x0
+.vfp11_veneer   0x000000000003d774        0x0
  .vfp11_veneer  0x0000000000000000        0x0 linker stubs
 
-.v4_bx          0x000000000003d79c        0x0
+.v4_bx          0x000000000003d774        0x0
  .v4_bx         0x0000000000000000        0x0 linker stubs
 
-.iplt           0x000000000003d79c        0x0
+.iplt           0x000000000003d774        0x0
  .iplt          0x0000000000000000        0x0 build-TEENSY_3.6/py/nlrthumb.o
 
-.rel.dyn        0x000000000003d79c        0x0
+.rel.dyn        0x000000000003d774        0x0
  .rel.iplt      0x0000000000000000        0x0 build-TEENSY_3.6/py/nlrthumb.o
 
-.ARM.exidx      0x000000000003d79c        0x0
-                0x000000000003d79c                __exidx_start = .
+.ARM.exidx      0x000000000003d774        0x0
+                0x000000000003d774                __exidx_start = .
  *(.ARM.exidx* .gnu.linkonce.armexidx.*)
-                0x000000000003d79c                __exidx_end = .
-                0x000000000003d79c                _etext = .
+                0x000000000003d774                __exidx_end = .
+                0x000000000003d774                _etext = .
 
 .usbdescriptortable
                 0x000000001fff0000       0xa0
@@ -8893,9 +8893,9 @@ LOAD /usr/local/Cellar/gcc-arm-none-eabi-49/20150925/bin/../lib/gcc/arm-none-eab
  *(.usbbuffers*)
  .usbbuffers    0x000000001fff03d0      0x360 build-TEENSY_3.6/core/usb_mem.o
                 0x000000001fff03d0                usb_buffer_memory
-                0x000000000003d79c                _sidata = LOADADDR (.data)
+                0x000000000003d774                _sidata = LOADADDR (.data)
 
-.data           0x000000001fff0730      0x4ec load address 0x000000000003d79c
+.data           0x000000001fff0730      0x4ec load address 0x000000000003d774
                 0x000000001fff0730                . = ALIGN (0x4)
                 0x000000001fff0730                _sdata = .
                 0x000000001fff0730                _ram_start = .
@@ -8953,13 +8953,13 @@ LOAD /usr/local/Cellar/gcc-arm-none-eabi-49/20150925/bin/../lib/gcc/arm-none-eab
                 0x000000001fff0c1c                . = ALIGN (0x4)
                 0x000000001fff0c1c                _edata = .
 
-.igot.plt       0x000000001fff0c1c        0x0 load address 0x000000000003dc88
+.igot.plt       0x000000001fff0c1c        0x0 load address 0x000000000003dc60
  .igot.plt      0x0000000000000000        0x0 build-TEENSY_3.6/py/nlrthumb.o
 
 .noinit
  *(.noinit*)
 
-.bss            0x000000001fff0c1c      0x6ec load address 0x000000000003dc88
+.bss            0x000000001fff0c1c      0x6ec load address 0x000000000003dc60
                 0x000000001fff0c1c                . = ALIGN (0x4)
                 0x000000001fff0c1c                _sbss = .
                 0x000000001fff0c1c                __bss_start__ = .
@@ -9081,13 +9081,13 @@ LOAD /usr/local/Cellar/gcc-arm-none-eabi-49/20150925/bin/../lib/gcc/arm-none-eab
                 0x000000001fff1308                __bss_end = .
                 0x000000001fff1308                __bss_end__ = .
 
-.heap           0x000000001fff1308     0x4000 load address 0x000000000003e374
+.heap           0x000000001fff1308     0x4000 load address 0x000000000003e34c
                 0x000000001fff1308                . = ALIGN (0x4)
                 0x000000001fff1308                _heap_start = .
                 0x000000001fff5308                . = (. + _minimum_heap_size)
  *fill*         0x000000001fff1308     0x4000 
 
-.stack          0x000000001fff5308      0x800 load address 0x0000000000042374
+.stack          0x000000001fff5308      0x800 load address 0x000000000004234c
                 0x000000001fff5308                . = ALIGN (0x4)
                 0x000000001fff5b08                . = (. + _minimum_stack_size)
  *fill*         0x000000001fff5308      0x800 
