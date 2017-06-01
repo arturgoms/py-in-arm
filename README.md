@@ -44,6 +44,11 @@ It is an IDE created in Flask and based on the microPython framwork, everything 
 	Micropython Framework
 	Codemirror for editor 
 	Semantic UI
+	DIBBLED for the logo 
+ 
+ Logo is under creativecommons.org/licenses/by/4.0/ license <br>
+ @DIBBLED <a href="https://forum.xda-developers.com/member.php?u=8283384">XDA</a> & <a href="https://plus.google.com/u/1/113925592652668928530">G+</a> <br>
+Contact: dibbledesigns14@gmail.com
  
 ### Manual installation
 
