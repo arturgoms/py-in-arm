@@ -2,7 +2,7 @@
 
 <h1 align="center">
   <br>
-  <a href="https://github.com/arturgoms/PyinArm"><img src="https://dl.dropboxusercontent.com/s/uylcf1b53pxcwik/Hexagon.png?dl=0" alt="Markdownify" width="200"></a>
+  <a href="https://github.com/arturgoms/PyinArm"><img src="https://dl.dropboxusercontent.com/s/gn4o8r5lwsaibyl/pyinarm_blue_arrow.png?dl=0" alt="Markdownify" width="200"></a>
   <br>
 </h1>
 
